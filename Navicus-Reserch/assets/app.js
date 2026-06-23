@@ -303,6 +303,7 @@ function renderEligibilityDetails(p) {
     ['判定', s.eligibilityStatus || 'UNKNOWN'],
     ['理由', s.eligibilityReason || ''],
     ['次アクション', s.eligibilityNextAction || ''],
+    ['根拠URL', s.eligibilitySourceUrl || ''],
   ];
   return rows.filter(([,v]) => v !== '' && v !== null && v !== undefined).map(([k,v]) => `<li>${esc(k)}: ${esc(v)}</li>`).join('');
 }

@@ -7,6 +7,7 @@ import importlib.util
 import json
 import re
 import shutil
+import urllib.parse
 from pathlib import Path
 from typing import Any
 
@@ -189,6 +190,7 @@ SUMMARY_KEEP_KEYS = {
     "eligibilityStatus",
     "eligibilityReason",
     "eligibilityNextAction",
+    "eligibilitySourceUrl",
     "historicalSimilaritySummary",
     "proposalPageUrl",
     "titleUrl",
@@ -226,6 +228,29 @@ BUDGET_LABEL_RE = re.compile(
     r"(?:金\s*)?"
     r"([0-9０-９][0-9０-９,，\.．]*)\s*(千円|万円|億円|円)"
 )
+QUALIFICATION_TERM_RE = re.compile(
+    r"入札参加資格|参加資格|応募資格|資格要件|競争入札参加資格|資格者名簿|名簿|"
+    r"業種区分|営業種目|登録|地域要件|県内|市内|町内|本店|本社|支店|営業所|"
+    r"実績|許可|認定|共同企業体|JV|共同提案|単独又は共同|所在地を問わない|"
+    r"法人又は団体|全国|随時申請"
+)
+UNKNOWN_QUALIFICATION_RE = re.compile(
+    r"未確認|不明|要確認|UNKNOWN|Local candidate data does not include|参加資格の明示的な可否が未確認"
+)
+TITLE_PUNCT_RE = re.compile(r"[\s　「」『』（）()【】\[\]・_＿\-‐ー〜～:：,，.．/／]+")
+GENERIC_TITLE_TOKENS = {
+    "令和8年度",
+    "令和8年",
+    "2026年度",
+    "2026年",
+    "業務",
+    "業務委託",
+    "公告",
+    "募集",
+    "公募",
+    "入札公告",
+    "企画提案",
+}
 
 
 def normalize_number_text(value: Any) -> str:
@@ -382,6 +407,233 @@ def normalize_budget_summary(summary: dict[str, Any]) -> dict[str, Any]:
     return out
 
 
+def qualification_value_is_unknown(value: Any) -> bool:
+    text = compact_text(value, limit=500)
+    return not text or bool(UNKNOWN_QUALIFICATION_RE.search(text))
+
+
+def qualification_snippet_from_text(value: Any) -> str:
+    text = compact_text(value, limit=2400)
+    if not text:
+        return ""
+    match = QUALIFICATION_TERM_RE.search(text)
+    if not match:
+        return ""
+    start = max(0, match.start() - 180)
+    end = min(len(text), match.end() + 520)
+    for sep in ("。", "】", "）", ")"):
+        pos = text.rfind(sep, 0, match.start())
+        if pos >= 0 and pos > match.start() - 240:
+            start = pos + 1
+            break
+    for sep in ("。", "】"):
+        pos = text.find(sep, match.end())
+        if pos >= 0 and pos < match.end() + 520:
+            end = pos + 1
+            break
+    snippet = text[start:end].strip(" /　、。")
+    return compact_text(snippet, limit=360)
+
+
+def extract_qualification_snippet(source: dict[str, Any], materials: list[dict[str, Any]]) -> tuple[str, str]:
+    source_fields = [
+        "bidderQualificationSummary",
+        "eligibilitySummary",
+        "eligibility",
+        "participation_eligibility",
+        "bidEligibility",
+        "contract_period_text",
+        "submission_method_evidence_snippet",
+        "overview",
+        "scored_text_prefix",
+        "text",
+    ]
+    for field in source_fields:
+        snippet = qualification_snippet_from_text(source.get(field))
+        if snippet:
+            return snippet, str(source.get(f"{field}_source_url") or source.get("source_url") or source.get("root_notice_url") or source.get("url") or "")
+    for material in materials:
+        snippet = qualification_snippet_from_text(
+            " ".join(str(material.get(key) or "") for key in ("evidence", "title", "source_json"))
+        )
+        if snippet:
+            return snippet, str(material.get("url") or "")
+    return "", ""
+
+
+def normalize_match_text(value: Any) -> str:
+    text = compact_text(value, limit=1200).lower()
+    return TITLE_PUNCT_RE.sub("", text)
+
+
+def normalize_url_key(value: Any) -> str:
+    return str(value or "").strip().rstrip("/")
+
+
+def url_domain(value: Any) -> str:
+    parsed = urllib.parse.urlparse(str(value or ""))
+    return parsed.netloc.lower()
+
+
+def title_tokens(value: Any) -> set[str]:
+    raw = compact_text(value, limit=1200).lower()
+    tokens = {
+        token
+        for token in TITLE_PUNCT_RE.split(raw)
+        if len(token) >= 5 and token not in GENERIC_TITLE_TOKENS
+    }
+    return tokens
+
+
+def load_mineru_eligibility_overrides(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    cases = payload.get("cases") if isinstance(payload, dict) else payload
+    if not isinstance(cases, list):
+        return []
+    overrides: list[dict[str, Any]] = []
+    for case in cases:
+        if not isinstance(case, dict) or case.get("status") != "extracted":
+            continue
+        snippet = compact_text(case.get("eligibilitySnippet"), limit=520)
+        if not snippet:
+            continue
+        title_key = normalize_match_text(case.get("title"))
+        source_url = normalize_url_key(case.get("url"))
+        overrides.append(
+            {
+                "canonicalId": case.get("canonical_id") or case.get("canonicalId"),
+                "title": case.get("title"),
+                "titleKey": title_key,
+                "titleTokens": sorted(title_tokens(case.get("title"))),
+                "sourceUrl": source_url,
+                "snippet": snippet,
+                "slug": case.get("slug"),
+            }
+        )
+    return overrides
+
+
+def proposal_url_keys(public: dict[str, Any], source: dict[str, Any], materials: list[dict[str, Any]]) -> set[str]:
+    summary = public.get("summary") if isinstance(public.get("summary"), dict) else {}
+    keys: set[str] = set()
+    for container in (public, summary, source):
+        for field in (
+            "url",
+            "sourceUrl",
+            "source_url",
+            "titleUrl",
+            "title_url",
+            "proposalPageUrl",
+            "proposal_page_url",
+            "root_notice_url",
+        ):
+            key = normalize_url_key(container.get(field))
+            if key:
+                keys.add(key)
+    for material in materials:
+        key = normalize_url_key(material.get("url"))
+        if key:
+            keys.add(key)
+    return keys
+
+
+def proposal_domains(public: dict[str, Any], source: dict[str, Any], materials: list[dict[str, Any]]) -> set[str]:
+    return {domain for domain in (url_domain(url) for url in proposal_url_keys(public, source, materials)) if domain}
+
+
+def find_mineru_eligibility_override(
+    public: dict[str, Any],
+    source: dict[str, Any],
+    materials: list[dict[str, Any]],
+    overrides: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    if not overrides:
+        return None
+    canonical_id = str(public.get("canonical_id") or "")
+    for override in overrides:
+        if override.get("canonicalId") and str(override["canonicalId"]) == canonical_id:
+            return override
+
+    urls = proposal_url_keys(public, source, materials)
+    for override in overrides:
+        if override.get("sourceUrl") and override["sourceUrl"] in urls:
+            return override
+
+    title_keys = [
+        normalize_match_text(public.get("title")),
+        normalize_match_text(public.get("rawTitle")),
+        normalize_match_text(source.get("title")),
+        normalize_match_text(source.get("rawTitle")),
+    ]
+    domains = proposal_domains(public, source, materials)
+    for override in overrides:
+        key = str(override.get("titleKey") or "")
+        if len(key) < 8:
+            continue
+        for title_key in title_keys:
+            if len(title_key) >= 8 and (key in title_key or title_key in key):
+                return override
+        override_domain = url_domain(override.get("sourceUrl"))
+        if override_domain and domains and override_domain not in domains:
+            continue
+        override_tokens = set(override.get("titleTokens") or [])
+        if override_tokens:
+            for raw_title in (public.get("title"), public.get("rawTitle"), source.get("title"), source.get("rawTitle")):
+                if override_tokens & title_tokens(raw_title):
+                    return override
+    return None
+
+
+def apply_mineru_eligibility(public: dict[str, Any], override: dict[str, Any] | None) -> bool:
+    if not override:
+        return False
+    summary = public.get("summary") if isinstance(public.get("summary"), dict) else {}
+    current = (
+        summary.get("bidderQualificationSummary")
+        or summary.get("eligibilitySummary")
+        or summary.get("qualificationSummary")
+        or summary.get("eligibility")
+    )
+    if current and not qualification_value_is_unknown(current):
+        return False
+    text = f"公式PDF抽出候補（要確認）: {override['snippet']}"
+    summary["bidderQualificationSummary"] = text
+    summary["eligibilitySummary"] = text
+    summary["eligibilityStatus"] = "NEEDS_CONFIRMATION"
+    summary["eligibilityReason"] = "MinerUで公式PDFの参加資格・入札者資格条項を抽出。"
+    summary["eligibilityNextAction"] = "等級、名簿登録、地域要件、実績要件、共同提案可否を原文で最終確認する。"
+    if override.get("sourceUrl"):
+        summary["eligibilitySourceUrl"] = override["sourceUrl"]
+    public["summary"] = summary
+    return True
+
+
+def enrich_eligibility(public: dict[str, Any], source: dict[str, Any], materials: list[dict[str, Any]]) -> None:
+    summary = public.get("summary") if isinstance(public.get("summary"), dict) else {}
+    current = (
+        summary.get("bidderQualificationSummary")
+        or summary.get("eligibilitySummary")
+        or summary.get("qualificationSummary")
+        or summary.get("eligibility")
+    )
+    if current and not qualification_value_is_unknown(current):
+        return
+    snippet, source_url = extract_qualification_snippet(source, materials)
+    if not snippet:
+        return
+    text = f"要確認: 公式資料に資格記載候補あり - {snippet}"
+    summary["bidderQualificationSummary"] = text
+    summary["eligibilitySummary"] = text
+    summary["eligibilityStatus"] = "NEEDS_CONFIRMATION"
+    summary["eligibilityReason"] = "公式資料または取得済みevidence内に参加資格・名簿・実績等の記載候補を検出。"
+    summary["eligibilityNextAction"] = "該当する公式資料の資格条項を確認し、地域要件・名簿登録・業種区分・JV可否を確定する。"
+    if source_url:
+        summary["eligibilitySourceUrl"] = source_url
+    public["summary"] = summary
+
+
 def slim_summary(summary: dict[str, Any]) -> dict[str, Any]:
     summary = normalize_budget_summary(summary)
     out: dict[str, Any] = {}
@@ -454,15 +706,30 @@ def slim_proposal(public: dict[str, Any]) -> dict[str, Any]:
     return out
 
 
-def build_snapshot(db_path: Path, server_module: Any, release_artifacts: dict[str, Any]) -> dict[str, Any]:
+def build_snapshot(
+    db_path: Path,
+    server_module: Any,
+    release_artifacts: dict[str, Any],
+    mineru_eligibility_overrides: list[dict[str, Any]],
+) -> dict[str, Any]:
     database = server_module.ProposalDatabase(db_path)
     data = database.cache()
     observations = load_observation_records(db_path)
+    materials_index = {
+        canonical_id: rows
+        for canonical_id, rows in (data.get("materialsById") or {}).items()
+    }
     proposals: list[dict[str, Any]] = []
+    mineru_applied = 0
     for row in data["proposals"]:
         public = server_module.public_row(row)
         source = observations.get((str(row.get("canonical_id")), str(row.get("updated_run_id"))), {})
+        materials_for_case = materials_index.get(str(row.get("canonical_id")), [])
         enrich_budget(public, source)
+        enrich_eligibility(public, source, materials_for_case)
+        mineru_override = find_mineru_eligibility_override(public, source, materials_for_case, mineru_eligibility_overrides)
+        if apply_mineru_eligibility(public, mineru_override):
+            mineru_applied += 1
         public["deadlineBucket"] = row.get("_deadline_bucket", "all")
         public["isHistoricalAB"] = bool(server_module.is_historical_ab(row))
         proposals.append(slim_proposal(public))
@@ -486,6 +753,7 @@ def build_snapshot(db_path: Path, server_module: Any, release_artifacts: dict[st
         "exportedAt": data["exportedAt"],
         "latestRunId": latest_run.get("run_id", ""),
         "releaseDecision": (release_artifacts.get("releaseDecision") or {}).get("decision", ""),
+        "mineruEligibilityApplied": mineru_applied,
     }
     external_recall = release_artifacts.get("externalPortalRecallAudit") or {}
     if external_recall:
@@ -767,6 +1035,11 @@ def build_static_app(source_js: str) -> str:
         "    ['外部ポータル監査', stats.externalPortalRecall ? `${stats.externalPortalRecall.includedInRankedFinal || 0}/${stats.externalPortalRecall.caseCount || 0} ranked / 未収録${stats.externalPortalRecall.notFound || 0} / source止まり${stats.externalPortalRecall.sourceSeenNotRanked || 0}` : ''],\n"
         "    ['exported', formatExportedAt(stats.exportedAt || SNAPSHOT.exportedAt || '')],",
     )
+    patched = patched.replace(
+        "['次アクション', s.eligibilityNextAction || ''],",
+        "['次アクション', s.eligibilityNextAction || ''],\n"
+        "    ['根拠URL', s.eligibilitySourceUrl || ''],",
+    )
     return patched
 
 
@@ -910,6 +1183,11 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--run-date", required=True)
     parser.add_argument("--run-label", default="manual_research")
+    parser.add_argument(
+        "--mineru-eligibility-report",
+        type=Path,
+        help="Optional MinerU eligibility extraction report JSON.",
+    )
     parser.add_argument("--root-redirect", action="store_true")
     args = parser.parse_args()
 
@@ -921,7 +1199,11 @@ def main() -> int:
 
     release_artifacts = require_release_go(args.run_date)
     server_module = load_db_server_module(server_py)
-    snapshot = build_snapshot(args.db, server_module, release_artifacts)
+    mineru_report = args.mineru_eligibility_report or (
+        PROJECT_ROOT / "out/navicus_research" / args.run_date / "mineru_eligibility_report.json"
+    )
+    mineru_overrides = load_mineru_eligibility_overrides(mineru_report)
+    snapshot = build_snapshot(args.db, server_module, release_artifacts, mineru_overrides)
     run_entry = write_site(args.out, snapshot, args.db_dir, args.run_date, args.run_label, release_artifacts)
     if args.root_redirect:
         write_root_redirect(PROJECT_ROOT, args.out.name)
