@@ -1,0 +1,572 @@
+{
+  "schema_version": "external_portal_recall_audit_v1",
+  "run_date": "2026-06-23",
+  "input": "pasted-text.txt",
+  "case_count": 39,
+  "included_in_ranked_final_count": 18,
+  "not_found_count": 20,
+  "source_seen_not_ranked_count": 1,
+  "cases": [
+    {
+      "case_no": "1",
+      "method": "企画競争",
+      "period": "2026.06.23 - 2026.07.03",
+      "title": "SNS広告等を活用したインバウンド向け情報発信業務",
+      "issuer": "岡山県庁",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"SNS広告等を活用したインバウンド向け情報発信業務\" \"岡山\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "2",
+      "method": "随意契約",
+      "period": "2026.06.23 - 2026.06.30",
+      "title": "県警 特殊詐欺被害防止対策業務(SNS広報事業)【260619000283241】",
+      "issuer": "宮城県庁",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"県警 特殊詐欺被害防止対策業務(SNS広報事業)\" \"宮城\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "3",
+      "method": "企画競争",
+      "period": "2026.06.22 - 2026.07.06",
+      "title": "インバウンド向けSNS運用事業業務委託",
+      "issuer": "熊本県庁",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"インバウンド向けSNS運用事業業務委託\" \"熊本\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "4",
+      "method": "企画競争",
+      "period": "2026.06.22 - 2026.07.02",
+      "title": "令和8年度悪質商法対策推進事業 SNS 等広告制作・配信業務委託",
+      "issuer": "佐賀県庁",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"令和8年度悪質商法対策推進事業 SNS 等広告制作・配信業務委託\" \"佐賀\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "5",
+      "method": "企画競争",
+      "period": "2026.06.19 - 2026.07.10",
+      "title": "SNS活用プロモーション業務委託",
+      "issuer": "三島市役所",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"SNS活用プロモーション業務委託\" \"三島\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "6",
+      "method": "その他・不明",
+      "period": "2026.06.15 - 2026.07.03",
+      "title": "令和8年度沖縄県採用広報SNS運用及び職員PR動画制作・発信業務",
+      "issuer": "沖縄県警察本部",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"令和8年度沖縄県採用広報SNS運用及び職員PR動画制作・発信業務\" \"沖縄県警察\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "7",
+      "method": "企画競争",
+      "period": "2026.06.17 - 2026.06.30",
+      "title": "大阪市住宅供給公社 公社賃貸住宅公式SNSの運用等業務",
+      "issuer": "大阪市住宅供給公社",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"大阪市住宅供給公社 公社賃貸住宅公式SNSの運用等業務\" \"大阪市住宅供給公社\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "8",
+      "method": "一般競争入札",
+      "period": "2026.06.17 - 2026.08.21",
+      "title": "令和8年度 iDeCo 公式 SNS 運用業務",
+      "issuer": "国民年金基金",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"令和8年度 iDeCo 公式 SNS 運用業務\" \"国民年金基金\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "9",
+      "method": "企画競争",
+      "period": "2026.06.16 - 2026.06.29",
+      "title": "令和8年度SNSマーケティングに基づいたSNS動画発信事業",
+      "issuer": "富山県庁",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"令和8年度SNSマーケティングに基づいたSNS動画発信事業\" \"富山\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "10",
+      "method": "指名競争入札",
+      "period": "2026.06.16 - 2026.07.01",
+      "title": "2026000428南相馬市SNS広告出稿業務委託",
+      "issuer": "南相馬市役所",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"2026000428南相馬市SNS広告出稿業務委託\" \"南相馬\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "11",
+      "method": "企画競争",
+      "period": "2026.06.15 - 2026.07.22",
+      "title": "SNS広告配信等業務委託",
+      "issuer": "各務原市役所",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"SNS広告配信等業務委託\" \"各務原\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "12",
+      "method": "企画競争",
+      "period": "2026.06.15 - 2026.07.03",
+      "title": "令和8年度沖縄県採用広報SNS運用及び職員PR動画制作・発信業務",
+      "issuer": "沖縄県庁",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"令和8年度沖縄県採用広報SNS運用及び職員PR動画制作・発信業務\" \"沖縄\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "13",
+      "method": "希望制指名競争入札",
+      "period": "2026.06.15 - 2026.07.03",
+      "title": "令和8年度新型コロナウイルス後遺症に関するSNS広告の実施委託【08-59205】",
+      "issuer": "東京都庁",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"令和8年度新型コロナウイルス後遺症に関するSNS広告の実施委託\" \"東京都庁\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "14",
+      "method": "企画競争",
+      "period": "2026.06.12 - 2026.06.26",
+      "title": "令和8年度 SNS情報発信事業",
+      "issuer": "北海道観光機構",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"令和8年度 SNS情報発信事業\" \"北海道観光機構\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "15",
+      "method": "企画競争",
+      "period": "2026.06.12 - 2026.06.26",
+      "title": "令和8年度 SNS 発信強化事業",
+      "issuer": "北海道観光機構",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"令和8年度 SNS 発信強化事業\" \"北海道観光機構\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "16",
+      "method": "企画競争",
+      "period": "2026.06.12 - ---",
+      "title": "専門人材を活用したSNS情報発信支援業務委託",
+      "issuer": "品川区役所",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"専門人材を活用したSNS情報発信支援業務委託\" \"品川区\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "17",
+      "method": "企画競争",
+      "period": "2026.06.11 - 2026.06.29",
+      "title": "令和8年度 WEB・SNS シティプロモーション業務委託",
+      "issuer": "北本市役所",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"令和8年度 WEB・SNS シティプロモーション業務委託\" \"北本\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "18",
+      "method": "一般競争入札",
+      "period": "2026.06.11 - 2026.07.13",
+      "title": "著作物の公正な利活用に関するSNS・動画などを活用した令和8年度の普及啓発事業実施業務",
+      "issuer": "文部科学省(MEXT) 文化庁",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"著作物の公正な利活用に関するSNS・動画などを活用した令和8年度の普及啓発事業実施業務\" \"文部科学省(MEXT) 文化庁\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "19",
+      "method": "企画競争",
+      "period": "2026.06.11 - 2026.06.26",
+      "title": "令和8年度自殺対策SNS相談運営業務",
+      "issuer": "福島県庁 保健福祉部",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"令和8年度自殺対策SNS相談運営業務\" \"福島県庁 保健福祉部\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "20",
+      "method": "見積(オープンカウンター)",
+      "period": "2026.06.11 - 2026.06.23",
+      "title": "令和8年度ICTを活用したSNS相談窓口の普及事業業務委託(家庭福祉・施設整備課)",
+      "issuer": "三重県庁",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"令和8年度ICTを活用したSNS相談窓口の普及事業業務委託(家庭福祉・施設整備課)\" \"三重\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "21",
+      "method": "一般競争入札",
+      "period": "2026.06.09 - 2026.06.25",
+      "title": "令和8年度児童虐待防止SNS相談窓口周知広報業務委託",
+      "issuer": "神奈川県庁",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"令和8年度児童虐待防止SNS相談窓口周知広報業務委託\" \"神奈川\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "22",
+      "method": "一般競争入札",
+      "period": "2026.06.10 - 2026.06.29",
+      "title": "大麻の乱用防止に関するSNS広告掲載の業務委託",
+      "issuer": "内閣府(CAO) 国家公安委員会 警察庁",
+      "hit_stages": [
+        "source_api",
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"大麻の乱用防止に関するSNS広告掲載の業務委託\" \"内閣府(CAO) 国家公安委員会 警察庁\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "23",
+      "method": "企画競争",
+      "period": "2026.06.10 - 2026.07.09",
+      "title": "BOATRACE 尼崎 SNS 運用業務",
+      "issuer": "尼崎市役所",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"BOATRACE 尼崎 SNS 運用業務\" \"尼崎\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "24",
+      "method": "企画競争",
+      "period": "2026.06.10 - 2026.07.09",
+      "title": "BOATRACE尼崎 SNS運用業務",
+      "issuer": "伊丹市役所",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"BOATRACE尼崎 SNS運用業務\" \"伊丹\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "25",
+      "method": "企画競争",
+      "period": "2026.06.09 - 2026.07.08",
+      "title": "令和8年度いじめ、不登校等に関するSNS等を活用した相談体制構築事業",
+      "issuer": "京都府庁",
+      "hit_stages": [
+        "web_discovery",
+        "p1_candidates",
+        "finder_rows",
+        "ranked_final"
+      ],
+      "deepest_stage": "ranked_final",
+      "included_in_ranked_final": true,
+      "suggested_query": "\"令和8年度いじめ、不登校等に関するSNS等を活用した相談体制構築事業\" \"京都府庁\"",
+      "suggested_investigation": "included"
+    },
+    {
+      "case_no": "26",
+      "method": "企画競争",
+      "period": "2026.06.08 - 2026.06.23",
+      "title": "令和8年度SNSを活用した採用広報促進業務",
+      "issuer": "青森県庁",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"令和8年度SNSを活用した採用広報促進業務\" \"青森\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "27",
+      "method": "企画競争",
+      "period": "2026.06.08 - 2026.07.03",
+      "title": "広島市SNS24時間こども・若者相談窓口事業",
+      "issuer": "広島市役所",
+      "hit_stages": [
+        "web_discovery"
+      ],
+      "deepest_stage": "web_discovery",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"広島市SNS24時間こども・若者相談窓口事業\" \"広島\"",
+      "suggested_investigation": "source_seen_not_ranked: inspect candidate extraction and promotion gates"
+    },
+    {
+      "case_no": "28",
+      "method": "企画競争",
+      "period": "2026.06.04 - 2026.06.25",
+      "title": "令和8年度 北九州市公式SNS運用・分析・改善提案業務",
+      "issuer": "北九州市役所",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"令和8年度 北九州市公式SNS運用・分析・改善提案業務\" \"北九州\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "29",
+      "method": "企画競争",
+      "period": "2026.06.01 - 2026.06.26",
+      "title": "佐世保市子育て情報 SNS 運用支援業務",
+      "issuer": "佐世保市役所",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"佐世保市子育て情報 SNS 運用支援業務\" \"佐世保\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "30",
+      "method": "一般競争入札",
+      "period": "2026.06.01 - 2026.08.06",
+      "title": "2026-2029年度 Web・SNSを核とした広報企画・運用および広報関連Webシステムの設計・改善業務の派遣",
+      "issuer": "情報通信研究機構(NICT)",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"2026-2029年度 Web・SNSを核とした広報企画・運用および広報関連Webシステムの設計・改善業務の派遣\" \"情報通信研究機構(NICT)\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "31",
+      "method": "一般競争入札",
+      "period": "2026.06.01 - 2026.08.06",
+      "title": "20262029年度Web・SNSを核とした広報企画・運用および広報関連Webシステムの設計・改善業務の派遣 一式",
+      "issuer": "官報",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"20262029年度Web・SNSを核とした広報企画・運用および広報関連Webシステムの設計・改善業務の派遣 一式\" \"官報\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "32",
+      "method": "企画競争",
+      "period": "2026.05.15 - 2026.07.16",
+      "title": "警察官募集広報用SNS広告媒体制作業務",
+      "issuer": "宮城県警察本部",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"警察官募集広報用SNS広告媒体制作業務\" \"宮城県警察\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "33",
+      "method": "一般競争入札",
+      "period": "2026.05.12 - 2026.07.01",
+      "title": "SNS等オンライン空間における戦略的対外発信強化支援業務",
+      "issuer": "外務省(MOFA)",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"SNS等オンライン空間における戦略的対外発信強化支援業務\" \"外務省(MOFA)\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "34",
+      "method": "一般競争入札",
+      "period": "2026.05.12 - 2026.07.01",
+      "title": "SNS等オンライン空間における戦略的対外発信強化支援業務一式",
+      "issuer": "官報",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"SNS等オンライン空間における戦略的対外発信強化支援業務一式\" \"官報\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "35",
+      "method": "企画競争",
+      "period": "2026.05.08 - ---",
+      "title": "令和8年度福祉局SNSコンテンツ制作及び運用業務委託【08-01000】",
+      "issuer": "東京都庁",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"令和8年度福祉局SNSコンテンツ制作及び運用業務委託\" \"東京都庁\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "36",
+      "method": "企画競争",
+      "period": "2026.04.03 - ---",
+      "title": "SNSを活用したオンラインカジノの違法性の周知に関する広報業務委託",
+      "issuer": "内閣府(CAO) 国家公安委員会 警察庁",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"SNSを活用したオンラインカジノの違法性の周知に関する広報業務委託\" \"内閣府(CAO) 国家公安委員会 警察庁\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "37",
+      "method": "希望制指名競争入札",
+      "period": "2026.02.20 - ---",
+      "title": "(1) SNS運用教育",
+      "issuer": "防衛省(MOD) 陸上自衛隊 東北方面隊 東北方面会計隊",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"(1) SNS運用教育\" \"防衛省(MOD) 陸上自衛隊 東北方面隊 東北方面会計隊\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "38",
+      "method": "企画競争",
+      "period": "2026.02.12 - ---",
+      "title": "令和8年度SNSアカウント(英語・ドイツ語・スペイン語・イタリア語・フランス語・中国語繁体字・韓国語・タイ語)運営業務委託",
+      "issuer": "東京観光財団",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"令和8年度SNSアカウント(英語・ドイツ語・スペイン語・イタリア語・フランス語・中国語繁体字・韓国語・タイ語)運営業務委託\" \"東京観光財団\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    },
+    {
+      "case_no": "39",
+      "method": "企画競争",
+      "period": "2026.01.22 - ---",
+      "title": "SNSからの緊急事態情報収集",
+      "issuer": "外務省(MOFA)",
+      "hit_stages": [],
+      "deepest_stage": "not_found",
+      "included_in_ranked_final": false,
+      "suggested_query": "\"SNSからの緊急事態情報収集\" \"外務省(MOFA)\"",
+      "suggested_investigation": "not_in_source_artifacts: add official seed/query or widen source acquisition"
+    }
+  ]
+}

@@ -138,6 +138,7 @@ function renderStats() {
     ['資料/PDF', stats.materials || 0],
     ['気になる', stats.favorite || 0],
     ['Release', stats.releaseDecision || (SNAPSHOT.releaseGate && SNAPSHOT.releaseGate.decision) || ''],
+    ['外部ポータル監査', stats.externalPortalRecall ? `${stats.externalPortalRecall.includedInRankedFinal || 0}/${stats.externalPortalRecall.caseCount || 0} ranked / 未収録${stats.externalPortalRecall.notFound || 0} / source止まり${stats.externalPortalRecall.sourceSeenNotRanked || 0}` : ''],
     ['exported', formatExportedAt(stats.exportedAt || SNAPSHOT.exportedAt || '')],
   ].map(([k,v]) => `<div class="row"><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join('');
   $('resultCount').textContent = stats.filtered || 0;

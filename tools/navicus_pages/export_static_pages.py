@@ -61,6 +61,7 @@ def require_release_go(run_date: str) -> dict[str, Any]:
         "knownPositiveReplay": load_json_file(source_dir / "known_positive_replay/replay_report.json"),
         "schemaPreflight": load_json_file(research_dir / "schema_preflight_report.json"),
         "waveStatus": load_json_file(research_dir / "wave_status.json"),
+        "externalPortalRecallAudit": load_json_file(research_dir / "external_portal_recall_audit.json"),
     }
     release = artifacts["releaseDecision"]
     if release.get("decision") != "GO" or release.get("passed") is not True:
@@ -75,8 +76,9 @@ def release_summary(artifacts: dict[str, Any]) -> dict[str, Any]:
     known = artifacts.get("knownPositiveReplay") or {}
     quality = artifacts.get("qualityReport") or {}
     preflight = artifacts.get("schemaPreflight") or {}
+    external_recall = artifacts.get("externalPortalRecallAudit") or {}
     summary = release.get("summary") if isinstance(release.get("summary"), dict) else {}
-    return {
+    out = {
         "decision": release.get("decision"),
         "passed": release.get("passed"),
         "qualityPassed": quality.get("passed"),
@@ -89,6 +91,14 @@ def release_summary(artifacts: dict[str, Any]) -> dict[str, Any]:
         "activeishSnsCandidateCount": summary.get("activeish_sns_candidate_count") or csv_go.get("activeish_sns_candidate_count"),
         "activeishSnsOperationCount": summary.get("activeish_sns_operation_count") or csv_go.get("activeish_sns_operation_count"),
     }
+    if external_recall:
+        out["externalPortalRecall"] = {
+            "caseCount": external_recall.get("case_count", 0),
+            "includedInRankedFinal": external_recall.get("included_in_ranked_final_count", 0),
+            "notFound": external_recall.get("not_found_count", 0),
+            "sourceSeenNotRanked": external_recall.get("source_seen_not_ranked_count", 0),
+        }
+    return out
 
 
 def flatten_index(indexed: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
@@ -477,6 +487,14 @@ def build_snapshot(db_path: Path, server_module: Any, release_artifacts: dict[st
         "latestRunId": latest_run.get("run_id", ""),
         "releaseDecision": (release_artifacts.get("releaseDecision") or {}).get("decision", ""),
     }
+    external_recall = release_artifacts.get("externalPortalRecallAudit") or {}
+    if external_recall:
+        stats["externalPortalRecall"] = {
+            "caseCount": external_recall.get("case_count", 0),
+            "includedInRankedFinal": external_recall.get("included_in_ranked_final_count", 0),
+            "notFound": external_recall.get("not_found_count", 0),
+            "sourceSeenNotRanked": external_recall.get("source_seen_not_ranked_count", 0),
+        }
     stats["existing"] = max(0, stats["total"] - stats["new"])
     release_gate = release_summary(release_artifacts)
     return {
@@ -746,6 +764,7 @@ def build_static_app(source_js: str) -> str:
     patched = patched.replace(
         "['exported', stats.exportedAt || SNAPSHOT.exportedAt || ''],",
         "['Release', stats.releaseDecision || (SNAPSHOT.releaseGate && SNAPSHOT.releaseGate.decision) || ''],\n"
+        "    ['外部ポータル監査', stats.externalPortalRecall ? `${stats.externalPortalRecall.includedInRankedFinal || 0}/${stats.externalPortalRecall.caseCount || 0} ranked / 未収録${stats.externalPortalRecall.notFound || 0} / source止まり${stats.externalPortalRecall.sourceSeenNotRanked || 0}` : ''],\n"
         "    ['exported', formatExportedAt(stats.exportedAt || SNAPSHOT.exportedAt || '')],",
     )
     return patched
@@ -803,11 +822,18 @@ def write_site(out_dir: Path, snapshot: dict[str, Any], db_dir: Path, run_date: 
         "knownPositiveReplay": "known_positive_replay_report.json",
         "schemaPreflight": "schema_preflight_report.json",
         "waveStatus": "wave_status.json",
+        "externalPortalRecallAudit": "external_portal_recall_audit.json",
     }
     for key, filename in release_paths.items():
         payload = release_artifacts.get(key)
         if payload:
-            write_json(run_dir / filename, payload, pretty=True)
+            public_payload = dict(payload)
+            if key == "externalPortalRecallAudit" and public_payload.get("input"):
+                public_payload["input"] = Path(str(public_payload["input"])).name
+            write_json(run_dir / filename, public_payload, pretty=True)
+    external_recall_csv = PROJECT_ROOT / "out/navicus_research" / run_date / "external_portal_recall_audit.csv"
+    if external_recall_csv.exists():
+        shutil.copy2(external_recall_csv, run_dir / "external_portal_recall_audit.csv")
 
     latest_run = snapshot.get("latestRun") or {}
     manifest_path = run_rel / "snapshot.json.gz"
