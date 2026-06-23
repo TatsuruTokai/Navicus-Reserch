@@ -158,6 +158,10 @@ SUMMARY_KEEP_KEYS = {
     "answer_deadline",
     "budgetText",
     "budget",
+    "budgetYen",
+    "budgetStatus",
+    "budgetSourceUrl",
+    "budgetEvidenceSnippet",
     "upperLimitAmount",
     "upper_limit_amount",
     "upperLimitAmountYen",
@@ -204,7 +208,172 @@ def compact_value(value: Any, *, list_limit: int = 8, text_limit: int = 420) -> 
     return value
 
 
+FULLWIDTH_DIGITS = str.maketrans("０１２３４５６７８９，,．", "0123456789,,.")
+BUDGET_UNKNOWN_VALUES = {"", "0", "0円", "unknown", "not_found", "none", "null", "未確認", "不明"}
+BUDGET_LABEL_RE = re.compile(
+    r"(?:提案限度額|提案上限額|契約限度額|契約上限額|委託料の上限額|委託上限額|上限額|限度額|予算額|予定価格|予定金額)"
+    r"[^0-9０-９]{0,35}"
+    r"(?:金\s*)?"
+    r"([0-9０-９][0-9０-９,，\.．]*)\s*(千円|万円|億円|円)"
+)
+
+
+def normalize_number_text(value: Any) -> str:
+    return str(value or "").translate(FULLWIDTH_DIGITS).replace(",", "").strip()
+
+
+def yen_from_number_and_unit(number_text: Any, unit: str = "円") -> int | None:
+    normalized = normalize_number_text(number_text)
+    if not normalized:
+        return None
+    try:
+        amount = float(normalized)
+    except ValueError:
+        return None
+    if amount <= 0:
+        return None
+    multiplier = {"円": 1, "千円": 1000, "万円": 10000, "億円": 100000000}.get(unit, 1)
+    return int(round(amount * multiplier))
+
+
+def yen_from_raw(value: Any) -> int | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    match = re.search(r"([0-9０-９][0-9０-９,，\.．]*)\s*(千円|万円|億円|円)?", text)
+    if not match:
+        return None
+    return yen_from_number_and_unit(match.group(1), match.group(2) or "円")
+
+
+def format_yen(yen: int | None) -> str:
+    return f"{yen:,}円" if yen and yen > 0 else ""
+
+
+def extract_budget_from_text(*values: Any) -> tuple[int | None, str, str]:
+    for value in values:
+        text = compact_text(value, limit=1800)
+        if not text:
+            continue
+        match = BUDGET_LABEL_RE.search(text)
+        if not match:
+            continue
+        yen = yen_from_number_and_unit(match.group(1), match.group(2))
+        if yen:
+            return yen, format_yen(yen), compact_text(match.group(0), limit=180)
+    return None, "", ""
+
+
+def budget_value_is_unknown(value: Any) -> bool:
+    text = str(value or "").strip()
+    return text.lower() in BUDGET_UNKNOWN_VALUES
+
+
+def load_observation_records(db_path: Path) -> dict[tuple[str, str], dict[str, Any]]:
+    records: dict[tuple[str, str], dict[str, Any]] = {}
+    import sqlite3
+
+    with sqlite3.connect(f"file:{db_path}?mode=ro", uri=True) as con:
+        con.row_factory = sqlite3.Row
+        for row in con.execute("SELECT canonical_id, run_id, proposal_json FROM proposal_observations"):
+            payload = load_json_text(row["proposal_json"])
+            if isinstance(payload, dict):
+                records[(str(row["canonical_id"]), str(row["run_id"]))] = payload
+    return records
+
+
+def load_json_text(value: Any) -> Any:
+    if not isinstance(value, str) or not value:
+        return {}
+    try:
+        return json.loads(value)
+    except json.JSONDecodeError:
+        return {}
+
+
+def budget_status_label(source: dict[str, Any]) -> str:
+    upper_status = str(source.get("upper_limit_status") or "").strip()
+    scheduled_status = str(source.get("scheduled_price_status") or "").strip()
+    if upper_status == "found":
+        return "上限額確認済み"
+    if upper_status == "not_found":
+        return "上限額記載なし"
+    if scheduled_status == "not_public":
+        return "予定価格等は非公表"
+    if upper_status == "unclear":
+        return "金額要確認"
+    return "金額要確認"
+
+
+def enrich_budget(public: dict[str, Any], source: dict[str, Any]) -> None:
+    if not source:
+        return
+    summary = public.get("summary") if isinstance(public.get("summary"), dict) else {}
+    current_text = summary.get("budgetText")
+    current_budget = summary.get("budget")
+    if not budget_value_is_unknown(current_text) and not budget_value_is_unknown(current_budget):
+        return
+
+    amounts = source.get("amounts") if isinstance(source.get("amounts"), dict) else {}
+    yen = (
+        yen_from_raw(source.get("corrected_budget_yen"))
+        or yen_from_raw(source.get("upper_limit_amount_yen"))
+        or yen_from_raw(amounts.get("upper_limit_amount_yen"))
+        or yen_from_raw(source.get("scheduled_price_yen"))
+        or yen_from_raw(source.get("upper_limit_amount"))
+        or yen_from_raw(amounts.get("upper_limit_amount"))
+        or yen_from_raw(source.get("scheduled_price"))
+    )
+    evidence = ""
+    if yen:
+        label = format_yen(yen)
+    else:
+        yen, label, evidence = extract_budget_from_text(
+            source.get("upper_limit_evidence_snippet"),
+            source.get("contract_period_text"),
+            source.get("overview"),
+        )
+    if label:
+        summary["budgetText"] = label
+        summary["budget"] = round((yen or 0) / 10000) if yen else ""
+        summary["budgetYen"] = yen
+        summary["budgetStatus"] = "found"
+        summary["budgetSourceUrl"] = (
+            source.get("upper_limit_evidence_source_url")
+            or source.get("contract_period_source_url")
+            or source.get("source_url")
+            or source.get("root_notice_url")
+            or source.get("url")
+            or ""
+        )
+        if evidence:
+            summary["budgetEvidenceSnippet"] = evidence
+    else:
+        summary["budgetText"] = budget_status_label(source)
+        summary["budget"] = ""
+        summary["budgetStatus"] = str(source.get("upper_limit_status") or source.get("scheduled_price_status") or "needs_review")
+    public["summary"] = summary
+
+
+def normalize_budget_summary(summary: dict[str, Any]) -> dict[str, Any]:
+    out = dict(summary)
+    status = str(out.get("budgetStatus") or "").strip()
+    if budget_value_is_unknown(out.get("budgetText")):
+        if status == "found":
+            out["budgetText"] = "金額確認済み"
+        elif status == "not_found":
+            out["budgetText"] = "上限額記載なし"
+        elif status in {"not_public", "scheduled_price_not_public"}:
+            out["budgetText"] = "予定価格等は非公表"
+        else:
+            out["budgetText"] = "金額要確認"
+    if budget_value_is_unknown(out.get("budget")):
+        out["budget"] = ""
+    return out
+
+
 def slim_summary(summary: dict[str, Any]) -> dict[str, Any]:
+    summary = normalize_budget_summary(summary)
     out: dict[str, Any] = {}
     for key in SUMMARY_KEEP_KEYS:
         value = summary.get(key)
@@ -278,9 +447,12 @@ def slim_proposal(public: dict[str, Any]) -> dict[str, Any]:
 def build_snapshot(db_path: Path, server_module: Any, release_artifacts: dict[str, Any]) -> dict[str, Any]:
     database = server_module.ProposalDatabase(db_path)
     data = database.cache()
+    observations = load_observation_records(db_path)
     proposals: list[dict[str, Any]] = []
     for row in data["proposals"]:
         public = server_module.public_row(row)
+        source = observations.get((str(row.get("canonical_id")), str(row.get("updated_run_id"))), {})
+        enrich_budget(public, source)
         public["deadlineBucket"] = row.get("_deadline_bucket", "all")
         public["isHistoricalAB"] = bool(server_module.is_historical_ab(row))
         proposals.append(slim_proposal(public))
@@ -530,11 +702,47 @@ async function render() {
 """
 
 
+STATIC_BUDGET_SUMMARY = r"""
+function budgetSummary(p) {
+  const s = p.summary || {};
+  const values = [
+    s.budgetText,
+    s.upperLimitAmount,
+    s.upper_limit_amount,
+    s.amounts && (s.amounts.upper_limit_amount || s.amounts.upperLimitAmount),
+    s.budgetYen,
+    s.budget,
+    s.upperLimitAmountYen,
+    s.upper_limit_amount_yen,
+    s.estimatedPrice,
+    s.scheduledPrice,
+    s.contractAmountYen,
+    s.awardAmountYen,
+    p.budget
+  ];
+  const amount = values.map(formatYen).find(Boolean) || '';
+  const status = String(s.budgetStatus || '').toLowerCase();
+  const unresolved = /記載なし|非公表|要確認|未確認|不明|unknown|not_found/.test(amount);
+  const found = status === 'found' || (!!amount && !unresolved && /円|千円|万円|億円/.test(amount));
+  const grade = (s.criteria && s.criteria.budget) || s.budgetGrade || '';
+  const meta = found
+    ? (grade ? `予算評価: ${grade}` : '公式資料から抽出')
+    : (amount ? '金額情報の公開状況' : '公式資料で要確認');
+  return {amount: amount || '未確認', cls: found ? '' : 'unknown', meta};
+}
+"""
+
+
 def build_static_app(source_js: str) -> str:
     if "async function render()" not in source_js:
         raise RuntimeError("source app.js does not contain async render")
     patched = source_js.replace("function requestPayload() {", STATIC_HELPERS + "\nfunction requestPayload() {")
     patched = replace_function(patched, "async function render()", STATIC_RENDER)
+    patched = replace_function(patched, "function budgetSummary(p)", STATIC_BUDGET_SUMMARY)
+    patched = patched.replace(
+        "if (!text || text === '0' || text === '0円' || text === '未確認' || text === '不明') return '';",
+        "if (!text || ['0','0円','未確認','不明','unknown','not_found','none','null'].includes(text.toLowerCase())) return '';",
+    )
     patched = patched.replace(
         "['exported', stats.exportedAt || SNAPSHOT.exportedAt || ''],",
         "['Release', stats.releaseDecision || (SNAPSHOT.releaseGate && SNAPSHOT.releaseGate.decision) || ''],\n"

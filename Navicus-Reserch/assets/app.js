@@ -232,12 +232,13 @@ function formatYen(value) {
   if (value === '' || value === null || value === undefined) return '';
   if (typeof value === 'number' && Number.isFinite(value) && value > 0) return `${value.toLocaleString('ja-JP')}円`;
   const text = String(value || '').trim();
-  if (!text || text === '0' || text === '0円' || text === '未確認' || text === '不明') return '';
+  if (!text || ['0','0円','未確認','不明','unknown','not_found','none','null'].includes(text.toLowerCase())) return '';
   if (/円|千円|万円|億円|上限|限度|予定価格|税込|税抜/.test(text)) return text;
   const digits = text.replace(/[^0-9]/g, '');
   if (digits && digits !== '0' && digits.length === text.replace(/,/g, '').length) return `${Number(digits).toLocaleString('ja-JP')}円`;
   return text;
 }
+
 function budgetSummary(p) {
   const s = p.summary || {};
   const values = [
@@ -245,6 +246,7 @@ function budgetSummary(p) {
     s.upperLimitAmount,
     s.upper_limit_amount,
     s.amounts && (s.amounts.upper_limit_amount || s.amounts.upperLimitAmount),
+    s.budgetYen,
     s.budget,
     s.upperLimitAmountYen,
     s.upper_limit_amount_yen,
@@ -255,9 +257,16 @@ function budgetSummary(p) {
     p.budget
   ];
   const amount = values.map(formatYen).find(Boolean) || '';
+  const status = String(s.budgetStatus || '').toLowerCase();
+  const unresolved = /記載なし|非公表|要確認|未確認|不明|unknown|not_found/.test(amount);
+  const found = status === 'found' || (!!amount && !unresolved && /円|千円|万円|億円/.test(amount));
   const grade = (s.criteria && s.criteria.budget) || s.budgetGrade || '';
-  return {amount: amount || '未確認', cls: amount ? '' : 'unknown', meta: grade ? `予算評価: ${grade}` : (amount ? '公式資料の上限額・予定価格' : '公式資料で要確認')};
+  const meta = found
+    ? (grade ? `予算評価: ${grade}` : '公式資料から抽出')
+    : (amount ? '金額情報の公開状況' : '公式資料で要確認');
+  return {amount: amount || '未確認', cls: found ? '' : 'unknown', meta};
 }
+
 function cleanQualificationText(value) {
   const text = cleanEvidenceText(value).replace(/https?:\/\/\S+/g, '').replace(/\{[^{}]*(deadline|participation|proposal|submission)[^{}]*\}/gi, ' ').replace(/\s+/g, ' ').trim();
   return text.replace(/^[:：/・\s]+|[:：/・\s]+$/g, '');
