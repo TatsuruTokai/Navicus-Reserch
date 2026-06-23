@@ -1,0 +1,33 @@
+{
+  "candidate_count": 4617,
+  "candidate_record_size_violation_count": 0,
+  "candidate_record_size_violations_sample": [],
+  "completion_count": 0,
+  "csv_required_audit_fields_missing_from_schema": [],
+  "dropped_candidate_count": 0,
+  "dropped_candidate_reasons": {},
+  "error_count": 0,
+  "errors_sample": [],
+  "heavy_diagnostic_fields": [
+    "attachments",
+    "checked_documents",
+    "checked_queries",
+    "checked_urls",
+    "deadline_events",
+    "deadline_evidence_text",
+    "document_text",
+    "documents_raw",
+    "evidence_text",
+    "field_evidence",
+    "html",
+    "ingest_meta",
+    "raw_text",
+    "source_text"
+  ],
+  "heavy_diagnostic_sidecar_count": 4617,
+  "input": "out/navicus_sources/2026-06-23/p1_proposal_candidates.jsonl",
+  "output": "out/navicus_sources/2026-06-23/p1_proposal_candidates.compacted.jsonl",
+  "passed": true,
+  "schema_version": "schema_preflight_v12_4",
+  "size_limit_bytes": 12000
+}

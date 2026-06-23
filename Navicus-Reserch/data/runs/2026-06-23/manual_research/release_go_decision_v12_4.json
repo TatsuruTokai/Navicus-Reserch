@@ -1,0 +1,28 @@
+{
+  "decision": "GO",
+  "failures": [],
+  "passed": true,
+  "schema_version": "navicus_release_go_decision_v12_4",
+  "summary": {
+    "active_candidate_prefecture_count": 18,
+    "active_candidate_submission_unclear_count": 8,
+    "active_sales_submission_unclear_count": 0,
+    "active_submission_unclear_count": 8,
+    "active_submission_unclear_reviewed_count": 8,
+    "active_submission_unclear_unreviewed_count": 0,
+    "activeish_candidate_prefecture_count": 38,
+    "activeish_sns_candidate_count": 95,
+    "activeish_sns_operation_count": 79,
+    "candidate_promote_eligible_count": 220,
+    "csv_decision": "GO",
+    "ledger_digest_supplied": true,
+    "needs_review_rate": 0.712094,
+    "quality_passed": true,
+    "quality_tier": "staging",
+    "sales_promote_eligible_count": 22,
+    "schema_preflight_passed": true,
+    "sns_njss_gate_passed": true,
+    "sns_operation_gate_passed": true,
+    "top20_precision": 1.0
+  }
+}

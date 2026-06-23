@@ -1,0 +1,25 @@
+{
+  "latest": {
+    "runDate": "2026-06-23",
+    "runLabel": "manual_research",
+    "runId": "2026-06-23_manual_research",
+    "snapshot": "runs/2026-06-23/manual_research/snapshot.json.gz",
+    "exportedAt": "2026-06-23T10:35:15.541291+00:00",
+    "proposalCount": 5368,
+    "bplus": 13,
+    "releaseDecision": "GO",
+    "releaseGate": {
+      "decision": "GO",
+      "passed": true,
+      "qualityPassed": true,
+      "csvDecision": "GO",
+      "top20Precision": 1.0,
+      "knownPositiveRecall": 0.8,
+      "schemaPreflightPassed": true,
+      "candidatePromoteEligibleCount": 220,
+      "salesPromoteEligibleCount": 22,
+      "activeishSnsCandidateCount": 95,
+      "activeishSnsOperationCount": 79
+    }
+  }
+}
