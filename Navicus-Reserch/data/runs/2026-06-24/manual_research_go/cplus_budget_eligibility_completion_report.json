@@ -1,0 +1,625 @@
+{
+  "schema_version": "cplus_budget_eligibility_completion_v1",
+  "run_date": "2026-06-24",
+  "observed_at": "2026-06-24T14:08:47.520115+00:00",
+  "row_count": 28,
+  "bplus_mineru_reviewed_count": 2,
+  "cplus_rows": [
+    {
+      "rank": 1,
+      "grade": "A",
+      "status": "READY",
+      "title": "令和8年度沖縄県採用広報SNS運用及び職員PR動画制作・発信業務に係る企画提案公募",
+      "sourceUrl": "https://www.pref.okinawa.jp/shigoto/nyusatsukeiyaku/1015342/1025064/1037584/1040329.html",
+      "before": {
+        "budgetText": "unknown",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "4,574,000円",
+        "budgetStatus": "found",
+        "budgetYen": 4574000,
+        "eligibilityStatus": "NEEDS_CONFIRMATION",
+        "bidderQualificationSummary": "沖縄県内に本店・支店・営業所を有し、県指名停止なし、税滞納なし、暴排非該当、社会保険・労働法令遵守、業務遂行能力/実績が必要。共同企業体可。",
+        "eligibilitySourceUrl": "https://www.pref.okinawa.jp/_res/projects/default_project/_page_/001/040/329/01_bosyuyoryo.pdf",
+        "bplusPdfReviewStatus": "MINERU_REVIEWED"
+      }
+    },
+    {
+      "rank": 2,
+      "grade": "A",
+      "status": "READY",
+      "title": "【公募型プロポーザル】熊本地震記録映像集制作業務委託について",
+      "sourceUrl": "https://www.city.kumamoto.jp/kiji00371294/index.html",
+      "before": {
+        "budgetText": "unknown",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "6,000,000円",
+        "budgetStatus": "found",
+        "budgetYen": 6000000,
+        "eligibilityStatus": "NEEDS_CONFIRMATION",
+        "bidderQualificationSummary": "熊本市業務委託契約等の参加資格者名簿登録、地自法167条の4非該当、暴排非該当、指名停止なし、税滞納なし等が必要。",
+        "eligibilitySourceUrl": "https://www.city.kumamoto.jp/kiji00371294/3_71294_507152_up_cskyi0gz.pdf",
+        "bplusPdfReviewStatus": "MINERU_REVIEWED"
+      }
+    },
+    {
+      "rank": 3,
+      "grade": "C",
+      "status": "READY",
+      "title": "【告示】総合評価一般競争入札の実施（令和８年度（2026年度）北海道障がい者ピアサポーター養成事業委託業務）",
+      "sourceUrl": "https://www.pref.hokkaido.lg.jp/hf/shf/262428.html",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.pref.hokkaido.lg.jp/hf/shf/262428.html",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 4,
+      "grade": "C",
+      "status": "READY",
+      "title": "関西圏在住者を対象としたかがわ暮らし移住体験ツアー開催業務委託契約の企画提案方式（プロポーザル方式）による公募について",
+      "sourceUrl": "https://www.pref.kagawa.lg.jp/documents/61731/01_kokoku.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.pref.kagawa.lg.jp/documents/61731/01_kokoku.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 5,
+      "grade": "C",
+      "status": "READY",
+      "title": "柏崎市都市計画マスタープラン及び柏崎市立地適正化計画見直し支援業務委託に係る公募型プロポーザルを実施します",
+      "sourceUrl": "https://www.city.kashiwazaki.lg.jp/material/files/group/31/260612kz-tosimasu-ritteki-koubogatapuropo-jissiyouryou.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.kashiwazaki.lg.jp/material/files/group/31/260612kz-tosimasu-ritteki-koubogatapuropo-jissiyouryou.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 6,
+      "grade": "C",
+      "status": "READY",
+      "title": "高森町ふれあいスクール運営業務委託【放課後児童クラブ・放課後子ども教室】に係る公募型プロポーザルの実施について",
+      "sourceUrl": "https://www.town.nagano-takamori.lg.jp/fs/7/7/1/4/1/_/00_%E5%85%AC%E5%91%8A.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.town.nagano-takamori.lg.jp/fs/7/7/1/4/1/_/00_%E5%85%AC%E5%91%8A.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 7,
+      "grade": "C",
+      "status": "READY",
+      "title": "札の辻スクエア総合管理業務委託事業候補者をプロポーザル方式により募集します",
+      "sourceUrl": "https://www.city.minato.tokyo.jp/documents/179318/20260612152105.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.minato.tokyo.jp/documents/179318/20260612152105.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 8,
+      "grade": "C",
+      "status": "READY",
+      "title": "館山市・南房総市トライアルステイ業務委託",
+      "sourceUrl": "https://www.city.tateyama.chiba.jp/files/300400091.pdf",
+      "before": {
+        "budgetText": "2,000,000円",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "2,000,000円",
+        "budgetStatus": "found",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.tateyama.chiba.jp/files/300400091.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 9,
+      "grade": "C",
+      "status": "READY",
+      "title": "広報紙編集・印刷製本業務委託に係る公募型プロポーザルの実施について",
+      "sourceUrl": "https://www.city.katori.lg.jp/government/keiyaku/proposal/kohoinsatuseihon05.files/R8_yoryo.pdf",
+      "before": {
+        "budgetText": "unknown",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.katori.lg.jp/government/keiyaku/proposal/kohoinsatuseihon05.files/R8_yoryo.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 10,
+      "grade": "C",
+      "status": "READY",
+      "title": "【公募型プロポーザル】「にかほ市交流イベント開催業務委託」に関する企画提案の募集について",
+      "sourceUrl": "https://www.city.nikaho.akita.jp/material/files/group/53/nikaho_kouryu_guidelines.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.nikaho.akita.jp/material/files/group/53/nikaho_kouryu_guidelines.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 11,
+      "grade": "C",
+      "status": "READY",
+      "title": "令和８年度 広報高森特集記事作成業務委託に係る募集型プロポーザルの実施について",
+      "sourceUrl": "https://www.town.nagano-takamori.lg.jp/fs/7/6/9/3/6/_/%E3%80%90%E5%85%AC%E5%91%8A%E3%80%918%E9%AB%98%E6%A3%AE%E7%94%BA%E5%85%AC%E5%91%8A%E7%AC%AC15%E5%8F%B7.pdf",
+      "before": {
+        "budgetText": "unknown",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.town.nagano-takamori.lg.jp/fs/7/6/9/3/6/_/%E3%80%90%E5%85%AC%E5%91%8A%E3%80%918%E9%AB%98%E6%A3%AE%E7%94%BA%E5%85%AC%E5%91%8A%E7%AC%AC15%E5%8F%B7.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 12,
+      "grade": "C",
+      "status": "DROP",
+      "title": "BOATRACE尼崎 SNS運用業務の事業者募集について",
+      "sourceUrl": "https://www.city.amagasaki.hyogo.jp/sangyo/zigyousya/co_bosyu/1043672.html",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.amagasaki.hyogo.jp/sangyo/zigyousya/co_bosyu/1043672.html",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 13,
+      "grade": "C",
+      "status": "DROP",
+      "title": "大学パンフレットの企画・制作等業務（2028年度、2029年度）一式",
+      "sourceUrl": "https://www.obihiro.ac.jp/wp/wp-content/uploads/2026/05/1koukoku_20260520.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.obihiro.ac.jp/wp/wp-content/uploads/2026/05/1koukoku_20260520.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 14,
+      "grade": "C",
+      "status": "DROP",
+      "title": "令和8年度香川県宿泊施設現況調査等業務に係る企画提案方式（プロポーザル方式）による公募について（公告）",
+      "sourceUrl": "https://www.pref.kagawa.lg.jp/documents/62171/koukoku.pdf",
+      "before": {
+        "budgetText": "4,666,000円",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "4,666,000円",
+        "budgetStatus": "found",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.pref.kagawa.lg.jp/documents/62171/koukoku.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 15,
+      "grade": "C",
+      "status": "DROP",
+      "title": "令和8年度玄海町みらい計画庁内運用体制構築伴走支援業務委託に伴う一般競争入札の実施について",
+      "sourceUrl": "https://www.town.genkai.lg.jp/uploaded/life/93774_904847_misc.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.town.genkai.lg.jp/uploaded/life/93774_904847_misc.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 16,
+      "grade": "C",
+      "status": "DROP",
+      "title": "令和8年度那覇地方法務局及び那覇地方検察庁職員健康診断業務委託契約",
+      "sourceUrl": "https://houmukyoku.moj.go.jp/naha/content/001464948.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://houmukyoku.moj.go.jp/naha/content/001464948.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 17,
+      "grade": "C",
+      "status": "DROP",
+      "title": "指導課：【第361号】小・中・義務教育学校ストレスチェック等業務委託",
+      "sourceUrl": "https://www.city.kasukabe.lg.jp/jigyoshamuke/nyusatsu_keiyaku/nyusatsukokokuichiran/61/26440.html",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.kasukabe.lg.jp/jigyoshamuke/nyusatsu_keiyaku/nyusatsukokokuichiran/61/26440.html",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 18,
+      "grade": "C",
+      "status": "DROP",
+      "title": "管財課：【第359号】集会所等樹木管理業務委託",
+      "sourceUrl": "https://www.city.kasukabe.lg.jp/jigyoshamuke/nyusatsu_keiyaku/nyusatsukokokuichiran/26/37252.html",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.kasukabe.lg.jp/jigyoshamuke/nyusatsu_keiyaku/nyusatsukokokuichiran/26/37252.html",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 19,
+      "grade": "C",
+      "status": "DROP",
+      "title": "令和８年度町有林造成事業（下刈（餌場創出））業務委託に係る一般競争入札について",
+      "sourceUrl": "https://www.town.sumita.iwate.jp/docs/2026062300030/files/001.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.town.sumita.iwate.jp/docs/2026062300030/files/001.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 20,
+      "grade": "C",
+      "status": "DROP",
+      "title": "特殊建築物定期調査業務委託(鷹巣地区4小学校)",
+      "sourceUrl": "https://www.city.kitaakita.akita.jp/uploads/public/archive_0000010742_00/%E5%85%AC%E5%91%8A(%E6%A5%AD%E5%8B%99)_411_(%E6%94%B9).pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.kitaakita.akita.jp/uploads/public/archive_0000010742_00/%E5%85%AC%E5%91%8A(%E6%A5%AD%E5%8B%99)_411_(%E6%94%B9).pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 21,
+      "grade": "C",
+      "status": "DROP",
+      "title": "森林再生ツアー業務委託に係る公募型プロポーザルの実施について",
+      "sourceUrl": "https://www.city.koto.lg.jp/380200/documents/20260611093208.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.koto.lg.jp/380200/documents/20260611093208.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 22,
+      "grade": "C",
+      "status": "DROP",
+      "title": "秋田県埋蔵文化財センター「下都遺跡発掘調査及び整理作業に伴う遺跡図形システム等賃貸借契約」の条件付き一般競争入札について",
+      "sourceUrl": "https://www.pref.akita.lg.jp/uploads/public/archive_0000097438_00/R%EF%BC%98/%EF%BC%B2%EF%BC%98%E4%B8%8B%E9%8D%8B%E5%80%89%E3%80%80%E9%81%BA%E8%B7%A1%E5%9B%B3%E5%BD%A2%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0/01_%E5%85%AC%E5%91%8A%E6%96%87.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.pref.akita.lg.jp/uploads/public/archive_0000097438_00/R%EF%BC%98/%EF%BC%B2%EF%BC%98%E4%B8%8B%E9%8D%8B%E5%80%89%E3%80%80%E9%81%BA%E8%B7%A1%E5%9B%B3%E5%BD%A2%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0/01_%E5%85%AC%E5%91%8A%E6%96%87.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 23,
+      "grade": "C",
+      "status": "DROP",
+      "title": "グローバル人材育成・確保支援事業「インド高度人材セミナー開催等運営業務」（一般競争入札）",
+      "sourceUrl": "https://www.pref.hiroshima.lg.jp/uploaded/attachment/673205.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.pref.hiroshima.lg.jp/uploaded/attachment/673205.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 24,
+      "grade": "C",
+      "status": "DROP",
+      "title": "国道493号防災・安全交付金用地調査委託業務（道交国防安（改築）第602-025-6号）（令和８年６月18日公告）",
+      "sourceUrl": "https://www.pref.kochi.lg.jp/doc/2026061700169/file_contents/file_20266173105511_1.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.pref.kochi.lg.jp/doc/2026061700169/file_contents/file_20266173105511_1.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 25,
+      "grade": "C",
+      "status": "DROP",
+      "title": "県道大久保伊尾木線外７路線 橋梁点検委託業務（道老点（橋梁）第1-02-2号）（令和８年６月18日公告）",
+      "sourceUrl": "https://www.pref.kochi.lg.jp/doc/2026061700060/file_contents/file_2026617393611_1.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.pref.kochi.lg.jp/doc/2026061700060/file_contents/file_2026617393611_1.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 26,
+      "grade": "C",
+      "status": "DROP",
+      "title": "起業家等の海外派遣・招へい事業に係る旅行手配デスク運営",
+      "sourceUrl": "https://www.jetro.go.jp/ext_images/_Bid/ivd/IVD260618004koukoku.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.jetro.go.jp/ext_images/_Bid/ivd/IVD260618004koukoku.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 27,
+      "grade": "C",
+      "status": "DROP",
+      "title": "令和８年度田村市情報セキュリティ外部監査業務委託 (158.5KB)",
+      "sourceUrl": "https://www.city.tamura.lg.jp/soshiki/3/assets/260630%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E5%85%A5%E6%9C%AD%E5%85%AC%E5%91%8A%E7%AC%AC192%E5%8F%B7(3-519).pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.city.tamura.lg.jp/soshiki/3/assets/260630%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E5%85%A5%E6%9C%AD%E5%85%AC%E5%91%8A%E7%AC%AC192%E5%8F%B7(3-519).pdf",
+        "bplusPdfReviewStatus": null
+      }
+    },
+    {
+      "rank": 28,
+      "grade": "C",
+      "status": "DROP",
+      "title": "令和８年度福井県臨床研修病院見学バスツアー運営業務公募型プロポーザルを実施します。",
+      "sourceUrl": "https://www.pref.fukui.lg.jp/doc/iryou/byouinkengakubasu_d/fil/pr_koukoku.pdf",
+      "before": {
+        "budgetText": "",
+        "budgetStatus": null,
+        "eligibilityStatus": "UNKNOWN",
+        "bidderQualificationSummary": "未確認: 参加資格の明示的な可否が未確認。確認事項: 公式資料の参加資格欄を確認"
+      },
+      "after": {
+        "budgetText": "記載なし（公式資料確認済み）",
+        "budgetStatus": "not_stated_in_official_materials",
+        "budgetYen": null,
+        "eligibilityStatus": "NOT_STATED_IN_OFFICIAL_MATERIALS",
+        "bidderQualificationSummary": "記載なし（公式資料確認済み）",
+        "eligibilitySourceUrl": "https://www.pref.fukui.lg.jp/doc/iryou/byouinkengakubasu_d/fil/pr_koukoku.pdf",
+        "bplusPdfReviewStatus": null
+      }
+    }
+  ]
+}

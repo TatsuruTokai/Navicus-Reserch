@@ -1,0 +1,35 @@
+{
+  "run_id": "2026-06-24_manual_research_go",
+  "status": "success",
+  "counts": {
+    "observations:navicus_summary.csv": 4512,
+    "ranking_snapshots": 4512,
+    "similar_proposals": 10,
+    "proposal_materials": 16440,
+    "result_followups": 0,
+    "current_view": 5567
+  },
+  "artifacts": {
+    "db": "/Users/tatsuru/Documents/New project 5/out/navicus_database/navicus_proposals.sqlite",
+    "observation_paths": [
+      "/Users/tatsuru/Documents/New project 5/out/navicus_filtered/2026-06-24.REJECTED/navicus_summary.csv"
+    ],
+    "ranking_path": "/Users/tatsuru/Documents/New project 5/out/navicus_database/runs/2026-06-24_manual_research_go/ranked_candidates.final.json",
+    "followup_records_path": "/Users/tatsuru/Documents/New project 5/out/navicus_database/runs/2026-06-24_manual_research_go/result_followups.json",
+    "database_html": {
+      "out": "/Users/tatsuru/Documents/New project 5/out/navicus_database/index.html",
+      "proposal_count": 5567,
+      "run_count": 31
+    }
+  },
+  "self_improvement_loop": {
+    "stdout_tail": "{\n  \"status\": \"no_action_required\",\n  \"actions\": 0,\n  \"out_json\": \"/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-24/self_improvement_loop.json\",\n  \"out_md\": \"/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-24/self_improvement_loop.md\"\n}\n",
+    "stderr_tail": ""
+  },
+  "final_database_sales_audit": {
+    "out_json": "/Users/tatsuru/Documents/New project 5/out/navicus_database/runs/2026-06-24_manual_research_go/final_database_sales_audit.json",
+    "out_md": "/Users/tatsuru/Documents/New project 5/out/navicus_database/runs/2026-06-24_manual_research_go/final_database_sales_audit.md",
+    "stdout_tail": "{\n  \"status\": \"passed\",\n  \"db\": \"/Users/tatsuru/Documents/New project 5/out/navicus_database/navicus_proposals.sqlite\",\n  \"runId\": \"2026-06-24_manual_research_go\",\n  \"counts\": {\n    \"currentView\": 5567,\n    \"selectable\": 2,\n    \"S\": 0,\n    \"A\": 2,\n    \"B\": 0,\n    \"sensitiveDrops\": 63,\n    \"latestRunRows\": 4509\n  },\n  \"blockingIssues\": [],\n  \"reviewFindings\": []\n}\n",
+    "stderr_tail": ""
+  }
+}

@@ -1,12 +1,12 @@
 {
   "latest": {
-    "runDate": "2026-06-23",
-    "runLabel": "manual_research",
-    "runId": "2026-06-23_manual_research",
-    "snapshot": "runs/2026-06-23/manual_research/snapshot.json.gz",
-    "exportedAt": "2026-06-24T00:30:36.553822+00:00",
-    "proposalCount": 5368,
-    "bplus": 13,
+    "runDate": "2026-06-24",
+    "runLabel": "manual_research_go",
+    "runId": "2026-06-24_manual_research_go",
+    "snapshot": "runs/2026-06-24/manual_research_go/snapshot.json.gz",
+    "exportedAt": "2026-06-24T14:11:05.098458+00:00",
+    "proposalCount": 5567,
+    "bplus": 2,
     "releaseDecision": "GO",
     "releaseGate": {
       "decision": "GO",
@@ -16,16 +16,10 @@
       "top20Precision": 1.0,
       "knownPositiveRecall": 0.8,
       "schemaPreflightPassed": true,
-      "candidatePromoteEligibleCount": 220,
-      "salesPromoteEligibleCount": 22,
-      "activeishSnsCandidateCount": 95,
-      "activeishSnsOperationCount": 79,
-      "externalPortalRecall": {
-        "caseCount": 39,
-        "includedInRankedFinal": 18,
-        "notFound": 20,
-        "sourceSeenNotRanked": 1
-      }
+      "candidatePromoteEligibleCount": 224,
+      "salesPromoteEligibleCount": 17,
+      "activeishSnsCandidateCount": 90,
+      "activeishSnsOperationCount": 76
     }
   }
 }
