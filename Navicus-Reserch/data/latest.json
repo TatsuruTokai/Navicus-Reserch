@@ -1,12 +1,12 @@
 {
   "latest": {
     "runDate": "2026-06-24",
-    "runLabel": "manual_research_go",
-    "runId": "2026-06-24_manual_research_go",
-    "snapshot": "runs/2026-06-24/manual_research_go/snapshot.json.gz",
-    "exportedAt": "2026-06-24T14:11:05.098458+00:00",
-    "proposalCount": 5567,
-    "bplus": 2,
+    "runLabel": "manual_research_njss_repair2",
+    "runId": "2026-06-24_manual_research_njss_repair2",
+    "snapshot": "runs/2026-06-24/manual_research_njss_repair2/snapshot.json.gz",
+    "exportedAt": "2026-06-24T14:51:55.599019+00:00",
+    "proposalCount": 5576,
+    "bplus": 13,
     "releaseDecision": "GO",
     "releaseGate": {
       "decision": "GO",
@@ -19,7 +19,13 @@
       "candidatePromoteEligibleCount": 224,
       "salesPromoteEligibleCount": 17,
       "activeishSnsCandidateCount": 90,
-      "activeishSnsOperationCount": 76
+      "activeishSnsOperationCount": 76,
+      "externalPortalRecall": {
+        "caseCount": 37,
+        "includedInRankedFinal": 26,
+        "notFound": 11,
+        "sourceSeenNotRanked": 0
+      }
     }
   }
 }
