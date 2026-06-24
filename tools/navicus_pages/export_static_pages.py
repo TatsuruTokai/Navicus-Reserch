@@ -191,6 +191,7 @@ SUMMARY_KEEP_KEYS = {
     "eligibilityReason",
     "eligibilityNextAction",
     "eligibilitySourceUrl",
+    "eligibilitySummarySource",
     "historicalSimilaritySummary",
     "proposalPageUrl",
     "titleUrl",
@@ -496,7 +497,13 @@ def load_mineru_eligibility_overrides(path: Path) -> list[dict[str, Any]]:
     for case in cases:
         if not isinstance(case, dict) or case.get("status") != "extracted":
             continue
-        snippet = compact_text(case.get("eligibilitySnippet"), limit=520)
+        snippet = compact_text(
+            case.get("eligibilityLlmSummary")
+            or case.get("eligibilityDisplaySummary")
+            or case.get("eligibilitySummary")
+            or case.get("eligibilitySnippet"),
+            limit=420,
+        )
         if not snippet:
             continue
         title_key = normalize_match_text(case.get("title"))
@@ -509,6 +516,7 @@ def load_mineru_eligibility_overrides(path: Path) -> list[dict[str, Any]]:
                 "titleTokens": sorted(title_tokens(case.get("title"))),
                 "sourceUrl": source_url,
                 "snippet": snippet,
+                "summarySource": case.get("eligibilitySummarySource") or case.get("summarySource") or "mineru_extract",
                 "slug": case.get("slug"),
             }
         )
@@ -598,12 +606,16 @@ def apply_mineru_eligibility(public: dict[str, Any], override: dict[str, Any] | 
     )
     if current and not qualification_value_is_unknown(current):
         return False
-    text = f"公式PDF抽出候補（要確認）: {override['snippet']}"
+    summary_source = str(override.get("summarySource") or "")
+    label = "公式PDF資格要約（LLM・要確認）" if "llm" in summary_source.lower() else "公式PDF資格要約（要確認）"
+    text = f"{label}: {override['snippet']}"
     summary["bidderQualificationSummary"] = text
     summary["eligibilitySummary"] = text
     summary["eligibilityStatus"] = "NEEDS_CONFIRMATION"
     summary["eligibilityReason"] = "MinerUで公式PDFの参加資格・入札者資格条項を抽出。"
     summary["eligibilityNextAction"] = "等級、名簿登録、地域要件、実績要件、共同提案可否を原文で最終確認する。"
+    if summary_source:
+        summary["eligibilitySummarySource"] = summary_source
     if override.get("sourceUrl"):
         summary["eligibilitySourceUrl"] = override["sourceUrl"]
     public["summary"] = summary
