@@ -30,11 +30,12 @@ LLM_SUMMARY_INSTRUCTIONS = """\
 MinerUで抽出した公式PDFの参加資格セクションを読み、NAVICUSの営業担当が一覧画面で判断できる短い日本語に要約してください。
 
 出力はJSONのみ:
-{"summary":"...", "confidence":"high|medium|low"}
+{"bullets":["...", "..."], "confidence":"high|medium|low"}
 
-summaryの条件:
-- 160〜260字程度。
+bulletsの条件:
+- 2〜5項目。各項目は80字以内を目安にする。
 - 「公式PDF資格要約（要確認）:」などの接頭辞は付けない。
+- 行頭の「-」や「・」はJSON値には含めない。
 - 実績要件、全省庁統一資格/自治体名簿、地域要件、認証、説明会参加、JV/コンソーシアム可否、指名停止・暴排除外など営業判断に必要な条件を優先する。
 - 原文にない条件を補わない。
 - OCR改行の「コンテン / ツ」のような分断を自然に直す。
@@ -153,11 +154,20 @@ def parse_summary_json(text: str) -> dict[str, Any]:
     try:
         payload = json.loads(candidate)
     except json.JSONDecodeError:
-        return {"summary": compact_single_line(candidate), "confidence": "low"}
+        return {"summary": compact_single_line(candidate), "bullets": [], "confidence": "low"}
     if not isinstance(payload, dict):
-        return {"summary": compact_single_line(candidate), "confidence": "low"}
+        return {"summary": compact_single_line(candidate), "bullets": [], "confidence": "low"}
+    bullets = [
+        compact_single_line(item, limit=120).lstrip("-・").strip()
+        for item in payload.get("bullets") or payload.get("eligibilityBullets") or []
+        if compact_single_line(item, limit=120).lstrip("-・").strip()
+    ]
+    summary = compact_single_line(payload.get("summary"))
+    if bullets and not summary:
+        summary = "\n".join(f"- {item}" for item in bullets)
     return {
-        "summary": compact_single_line(payload.get("summary")),
+        "summary": summary,
+        "bullets": bullets,
         "confidence": str(payload.get("confidence") or "medium"),
     }
 
@@ -218,7 +228,12 @@ def load_llm_summary_overrides(path: Path | None) -> dict[str, dict[str, Any]]:
     for row in rows:
         if not isinstance(row, dict):
             continue
-        summary = compact_single_line(
+        bullets = [
+            compact_single_line(item, limit=120).lstrip("-・").strip()
+            for item in row.get("bullets") or row.get("eligibilityBullets") or []
+            if compact_single_line(item, limit=120).lstrip("-・").strip()
+        ]
+        summary = "\n".join(f"- {item}" for item in bullets) if bullets else compact_single_line(
             row.get("eligibilityLlmSummary")
             or row.get("eligibilityDisplaySummary")
             or row.get("summary")
@@ -227,6 +242,7 @@ def load_llm_summary_overrides(path: Path | None) -> dict[str, dict[str, Any]]:
             continue
         normalized = {
             "summary": summary,
+            "bullets": bullets,
             "confidence": str(row.get("confidence") or row.get("eligibilitySummaryConfidence") or "medium"),
             "source": str(row.get("source") or row.get("eligibilitySummarySource") or "codex_llm_override"),
         }
@@ -241,6 +257,8 @@ def apply_summary(case: dict[str, Any], summary: dict[str, Any], *, source: str)
         return
     case["eligibilityLlmSummary"] = text
     case["eligibilityDisplaySummary"] = text
+    if summary.get("bullets"):
+        case["eligibilityBullets"] = summary["bullets"]
     case["eligibilitySummaryConfidence"] = summary.get("confidence") or "medium"
     case["eligibilitySummarySource"] = summary.get("source") or source
 

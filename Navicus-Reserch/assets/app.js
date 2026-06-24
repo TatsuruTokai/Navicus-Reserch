@@ -276,9 +276,22 @@ function shortenText(text, limit=220) {
   const normalized = String(text || '').replace(/\s+/g, ' ').trim();
   return normalized.length <= limit ? normalized : `${normalized.slice(0, limit).trim()}...`;
 }
+
+function renderMultilineText(value) {
+  return esc(value).replace(/\n/g, '<br>');
+}
+
+function qualificationBulletText(items) {
+  if (!Array.isArray(items)) return '';
+  return items.map(item => cleanQualificationText(item)).filter(Boolean).map(item => `- ${item}`).join('\n');
+}
+
 function qualificationSummary(p) {
   const s = p.summary || {};
-  const explicit = cleanQualificationText(s.bidderQualificationSummary || s.eligibilitySummary || s.qualificationSummary);
+  const bullets = qualificationBulletText(s.eligibilityBullets);
+  if (bullets) return bullets;
+  const explicit = cleanQualificationText(s.bidderQualificationSummary || s.eligibilitySummary || s.qualificationSummary)
+    .replace(/^公式PDF(?:資格要約|抽出候補)(?:（[^）]+）)?\s*[:：]\s*/, '');
   if (explicit) return shortenText(explicit);
   let raw = cleanQualificationText(firstValue(s.eligibility, s.participation_eligibility, s.bidEligibility, p.eligibility));
   const term = /入札参加資格|参加資格|応募資格|資格要件|競争入札参加資格|資格者名簿|名簿|業種区分|営業種目|登録|地域要件|県内|市内|町内|本店|本社|支店|営業所|実績|許可|認定|共同企業体|JV|共同提案|単独又は共同|所在地を問わない|法人又は団体|全国|随時申請/;
@@ -296,6 +309,8 @@ function qualificationSummary(p) {
   const detail = [reason, action ? `確認事項: ${action}` : ''].filter(Boolean).join('。');
   return detail ? shortenText(`${statusLabel}: ${detail}`) : '未確認: 公式資料の入札者資格欄で、地域要件・名簿登録・業種区分・JV可否・参加申請期限を確認する。';
 }
+
+
 function renderEligibilityDetails(p) {
   const s = p.summary || {};
   const rows = [
@@ -304,9 +319,11 @@ function renderEligibilityDetails(p) {
     ['理由', s.eligibilityReason || ''],
     ['次アクション', s.eligibilityNextAction || ''],
     ['根拠URL', s.eligibilitySourceUrl || ''],
+    ['根拠URL', s.eligibilitySourceUrl || ''],
   ];
-  return rows.filter(([,v]) => v !== '' && v !== null && v !== undefined).map(([k,v]) => `<li>${esc(k)}: ${esc(v)}</li>`).join('');
+  return rows.filter(([,v]) => v !== '' && v !== null && v !== undefined).map(([k,v]) => `<li>${esc(k)}: ${renderMultilineText(v)}</li>`).join('');
 }
+
 function renderCriteria(p) {
   const c = (p.summary && p.summary.criteria) || {};
   const items = [
@@ -384,7 +401,7 @@ function renderCard(p) {
       <section class="tile tile-grade"><div class="grade-badge">${esc(grade)}</div><div class="score-line">${esc(p.latest_status || '-')} / ${esc(s.decision || s.priority || '')}${esc(bestLine)}</div></section>
       <section class="tile tile-content"><div class="tile-kicker">CONTENT</div><p>${esc(s.summary || s.historicalSimilaritySummary || '内容要約なし')}</p></section>
       <section class="tile tile-deadline"><div class="tile-kicker">DEADLINE</div><div class="days ${days.cls}">${esc(days.text)}</div><div class="score-line">${esc(days.note)}</div>${renderDeadlineRows(p)}</section>
-      <section class="tile tile-eligibility"><div class="tile-kicker">入札者資格</div><p>${esc(eligibilityText)}</p></section>
+      <section class="tile tile-eligibility"><div class="tile-kicker">入札者資格</div><p>${renderMultilineText(eligibilityText)}</p></section>
       <section class="tile tile-budget"><div class="tile-kicker">BUDGET</div><div class="budget-amount ${budget.cls}">${esc(budget.amount)}</div><div class="budget-meta">${esc(budget.meta)}</div></section>
       <section class="tile tile-issuer"><div class="tile-kicker">ISSUER</div><div class="issuer-name">${esc(p.issuer)}</div><div class="issuer-meta">${esc(p.historical_similarity_status || '')}</div></section>
       <section class="tile tile-labels"><div class="tile-kicker">LABELS</div><div class="chips">${labels.map(label => `<span class="chip ${chipClass(label)}">${esc(label)}</span>`).join('')}</div></section>

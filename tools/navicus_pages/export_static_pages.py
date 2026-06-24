@@ -192,6 +192,7 @@ SUMMARY_KEEP_KEYS = {
     "eligibilityNextAction",
     "eligibilitySourceUrl",
     "eligibilitySummarySource",
+    "eligibilityBullets",
     "historicalSimilaritySummary",
     "proposalPageUrl",
     "titleUrl",
@@ -497,6 +498,11 @@ def load_mineru_eligibility_overrides(path: Path) -> list[dict[str, Any]]:
     for case in cases:
         if not isinstance(case, dict) or case.get("status") != "extracted":
             continue
+        bullets = [
+            compact_text(item, limit=140).lstrip("-・").strip()
+            for item in case.get("eligibilityBullets") or case.get("bullets") or []
+            if compact_text(item, limit=140).lstrip("-・").strip()
+        ]
         snippet = compact_text(
             case.get("eligibilityLlmSummary")
             or case.get("eligibilityDisplaySummary")
@@ -516,6 +522,7 @@ def load_mineru_eligibility_overrides(path: Path) -> list[dict[str, Any]]:
                 "titleTokens": sorted(title_tokens(case.get("title"))),
                 "sourceUrl": source_url,
                 "snippet": snippet,
+                "bullets": bullets,
                 "summarySource": case.get("eligibilitySummarySource") or case.get("summarySource") or "mineru_extract",
                 "slug": case.get("slug"),
             }
@@ -594,6 +601,45 @@ def find_mineru_eligibility_override(
     return None
 
 
+def clean_eligibility_label(value: str) -> str:
+    text = compact_text(value, limit=520)
+    text = re.sub(r"^公式PDF(?:資格要約|抽出候補)(?:（[^）]+）)?\s*[:：]\s*", "", text)
+    return text.strip()
+
+
+def eligibility_bullets(value: str) -> list[str]:
+    text = clean_eligibility_label(value)
+    if not text:
+        return []
+    if "\n" in text:
+        existing = [
+            re.sub(r"^\s*[-*・]\s*", "", line).strip()
+            for line in text.splitlines()
+            if line.strip()
+        ]
+        existing = [line for line in existing if line]
+        if len(existing) >= 2:
+            return existing[:6]
+
+    parts = [part.strip(" 、。") for part in re.split(r"。+", text) if part.strip(" 、。")]
+    if len(parts) >= 2:
+        return parts[:6]
+
+    clause_patterns = [
+        r"、(?=(?:全省庁|[A-ZＡ-Ｚ]?/?[A-ZＡ-Ｚ]?/?[A-ZＡ-Ｚ]?|Pマーク|ISO|JIS|過去|責任者|公社|参加停止|暴力団|法令|必要許認可|連絡|地方自治法|指名停止|名簿|コンソーシアム|構成員|提案|契約|入札説明会|虚偽|信用|類似|主体|市税|対象業務|事業協同組合))",
+    ]
+    clauses = [text]
+    for pattern in clause_patterns:
+        next_clauses: list[str] = []
+        for clause in clauses:
+            next_clauses.extend(re.split(pattern, clause))
+        clauses = next_clauses
+    bullets = [clause.strip(" 、。") for clause in clauses if clause.strip(" 、。")]
+    if len(bullets) >= 2:
+        return bullets[:6]
+    return [text]
+
+
 def apply_mineru_eligibility(public: dict[str, Any], override: dict[str, Any] | None) -> bool:
     if not override:
         return False
@@ -607,10 +653,16 @@ def apply_mineru_eligibility(public: dict[str, Any], override: dict[str, Any] | 
     if current and not qualification_value_is_unknown(current):
         return False
     summary_source = str(override.get("summarySource") or "")
-    label = "公式PDF資格要約（LLM・要確認）" if "llm" in summary_source.lower() else "公式PDF資格要約（要確認）"
-    text = f"{label}: {override['snippet']}"
+    text = clean_eligibility_label(str(override["snippet"]))
+    bullets = [
+        compact_text(item, limit=140).lstrip("-・").strip()
+        for item in override.get("bullets") or []
+        if compact_text(item, limit=140).lstrip("-・").strip()
+    ] or eligibility_bullets(text)
     summary["bidderQualificationSummary"] = text
     summary["eligibilitySummary"] = text
+    if bullets:
+        summary["eligibilityBullets"] = bullets
     summary["eligibilityStatus"] = "NEEDS_CONFIRMATION"
     summary["eligibilityReason"] = "MinerUで公式PDFの参加資格・入札者資格条項を抽出。"
     summary["eligibilityNextAction"] = "等級、名簿登録、地域要件、実績要件、共同提案可否を原文で最終確認する。"
@@ -1031,12 +1083,65 @@ function budgetSummary(p) {
 """
 
 
+STATIC_QUALIFICATION_SUMMARY = r"""
+function renderMultilineText(value) {
+  return esc(value).replace(/\n/g, '<br>');
+}
+
+function qualificationBulletText(items) {
+  if (!Array.isArray(items)) return '';
+  return items.map(item => cleanQualificationText(item)).filter(Boolean).map(item => `- ${item}`).join('\n');
+}
+
+function qualificationSummary(p) {
+  const s = p.summary || {};
+  const bullets = qualificationBulletText(s.eligibilityBullets);
+  if (bullets) return bullets;
+  const explicit = cleanQualificationText(s.bidderQualificationSummary || s.eligibilitySummary || s.qualificationSummary)
+    .replace(/^公式PDF(?:資格要約|抽出候補)(?:（[^）]+）)?\s*[:：]\s*/, '');
+  if (explicit) return shortenText(explicit);
+  let raw = cleanQualificationText(firstValue(s.eligibility, s.participation_eligibility, s.bidEligibility, p.eligibility));
+  const term = /入札参加資格|参加資格|応募資格|資格要件|競争入札参加資格|資格者名簿|名簿|業種区分|営業種目|登録|地域要件|県内|市内|町内|本店|本社|支店|営業所|実績|許可|認定|共同企業体|JV|共同提案|単独又は共同|所在地を問わない|法人又は団体|全国|随時申請/;
+  const summaryText = cleanQualificationText(s.summary);
+  if (!raw && term.test(summaryText)) raw = summaryText;
+  if (raw) {
+    const chunks = raw.split(/[。\n\r]+/).map(x => x.trim().replace(/^[:：/・\s]+|[:：/・\s]+$/g, '')).filter(Boolean);
+    const focused = chunks.filter(chunk => term.test(chunk));
+    const unique = [...new Set(focused.length ? focused : (chunks.length ? chunks : [raw]))];
+    return shortenText(unique.slice(0, 3).join('。'));
+  }
+  const statusLabel = {ELIGIBLE:'参加可能性あり', INELIGIBLE:'参加困難', NEEDS_CONFIRMATION:'要確認', UNKNOWN:'未確認'}[s.eligibilityStatus] || '未確認';
+  const reason = cleanQualificationText(s.eligibilityReason);
+  const action = cleanQualificationText(s.eligibilityNextAction);
+  const detail = [reason, action ? `確認事項: ${action}` : ''].filter(Boolean).join('。');
+  return detail ? shortenText(`${statusLabel}: ${detail}`) : '未確認: 公式資料の入札者資格欄で、地域要件・名簿登録・業種区分・JV可否・参加申請期限を確認する。';
+}
+"""
+
+
+STATIC_RENDER_ELIGIBILITY_DETAILS = r"""
+function renderEligibilityDetails(p) {
+  const s = p.summary || {};
+  const rows = [
+    ['要約', qualificationSummary(p)],
+    ['判定', s.eligibilityStatus || 'UNKNOWN'],
+    ['理由', s.eligibilityReason || ''],
+    ['次アクション', s.eligibilityNextAction || ''],
+    ['根拠URL', s.eligibilitySourceUrl || ''],
+  ];
+  return rows.filter(([,v]) => v !== '' && v !== null && v !== undefined).map(([k,v]) => `<li>${esc(k)}: ${renderMultilineText(v)}</li>`).join('');
+}
+"""
+
+
 def build_static_app(source_js: str) -> str:
     if "async function render()" not in source_js:
         raise RuntimeError("source app.js does not contain async render")
     patched = source_js.replace("function requestPayload() {", STATIC_HELPERS + "\nfunction requestPayload() {")
     patched = replace_function(patched, "async function render()", STATIC_RENDER)
     patched = replace_function(patched, "function budgetSummary(p)", STATIC_BUDGET_SUMMARY)
+    patched = replace_function(patched, "function qualificationSummary(p)", STATIC_QUALIFICATION_SUMMARY)
+    patched = replace_function(patched, "function renderEligibilityDetails(p)", STATIC_RENDER_ELIGIBILITY_DETAILS)
     patched = patched.replace(
         "if (!text || text === '0' || text === '0円' || text === '未確認' || text === '不明') return '';",
         "if (!text || ['0','0円','未確認','不明','unknown','not_found','none','null'].includes(text.toLowerCase())) return '';",
@@ -1051,6 +1156,10 @@ def build_static_app(source_js: str) -> str:
         "['次アクション', s.eligibilityNextAction || ''],",
         "['次アクション', s.eligibilityNextAction || ''],\n"
         "    ['根拠URL', s.eligibilitySourceUrl || ''],",
+    )
+    patched = patched.replace(
+        '<section class="tile tile-eligibility"><div class="tile-kicker">入札者資格</div><p>${esc(eligibilityText)}</p></section>',
+        '<section class="tile tile-eligibility"><div class="tile-kicker">入札者資格</div><p>${renderMultilineText(eligibilityText)}</p></section>',
     )
     return patched
 
