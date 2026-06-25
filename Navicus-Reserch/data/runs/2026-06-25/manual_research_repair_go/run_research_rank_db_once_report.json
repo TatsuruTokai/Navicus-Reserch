@@ -1,0 +1,43 @@
+{
+  "run_id": "2026-06-25_manual_research_repair_go",
+  "status": "success",
+  "counts": {
+    "observations:navicus_summary.csv": 4521,
+    "ranking_snapshots": 4521,
+    "similar_proposals": 15,
+    "proposal_materials": 16508,
+    "result_followups": 0,
+    "current_view": 5742
+  },
+  "artifacts": {
+    "db": "/Users/tatsuru/Documents/New project 5/out/navicus_database/navicus_proposals.sqlite",
+    "observation_paths": [
+      "/Users/tatsuru/Documents/New project 5/out/navicus_filtered/2026-06-25/navicus_summary.csv"
+    ],
+    "ranking_path": "/Users/tatsuru/Documents/New project 5/out/navicus_database/runs/2026-06-25_manual_research_repair_go/ranked_candidates.visibility_repaired.json",
+    "followup_records_path": "/Users/tatsuru/Documents/New project 5/out/navicus_database/runs/2026-06-25_manual_research_repair_go/result_followups.json",
+    "database_html": {
+      "out": "/Users/tatsuru/Documents/New project 5/out/navicus_database/index.html",
+      "proposal_count": 5742,
+      "run_count": 36
+    }
+  },
+  "decision_validation": {
+    "stdout_tail": "validation passed\n",
+    "stderr_tail": ""
+  },
+  "final_visibility_requirements": {
+    "stdout_tail": "{\"demotedCTierCount\": 0, \"unresolvedBPlusCount\": 0}\n",
+    "stderr_tail": ""
+  },
+  "self_improvement_loop": {
+    "stdout_tail": "{\n  \"status\": \"no_action_required\",\n  \"actions\": 0,\n  \"out_json\": \"/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-25/self_improvement_loop.json\",\n  \"out_md\": \"/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-25/self_improvement_loop.md\"\n}\n",
+    "stderr_tail": ""
+  },
+  "final_database_sales_audit": {
+    "out_json": "/Users/tatsuru/Documents/New project 5/out/navicus_database/runs/2026-06-25_manual_research_repair_go/final_database_sales_audit.json",
+    "out_md": "/Users/tatsuru/Documents/New project 5/out/navicus_database/runs/2026-06-25_manual_research_repair_go/final_database_sales_audit.md",
+    "stdout_tail": "{\n  \"status\": \"passed\",\n  \"db\": \"/Users/tatsuru/Documents/New project 5/out/navicus_database/navicus_proposals.sqlite\",\n  \"runId\": \"2026-06-25_manual_research_repair_go\",\n  \"counts\": {\n    \"currentView\": 5742,\n    \"selectable\": 16,\n    \"S\": 0,\n    \"A\": 15,\n    \"B\": 1,\n    \"sensitiveDrops\": 60,\n    \"latestRunRows\": 4517\n  },\n  \"blockingIssues\": [],\n  \"reviewFindings\": []\n}\n",
+    "stderr_tail": ""
+  }
+}

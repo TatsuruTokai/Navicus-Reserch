@@ -1,12 +1,12 @@
 {
   "latest": {
-    "runDate": "2026-06-24",
-    "runLabel": "manual_research_njss_repair2",
-    "runId": "2026-06-24_manual_research_njss_repair2",
-    "snapshot": "runs/2026-06-24/manual_research_njss_repair2/snapshot.json.gz",
-    "exportedAt": "2026-06-24T14:51:55.599019+00:00",
-    "proposalCount": 5576,
-    "bplus": 13,
+    "runDate": "2026-06-25",
+    "runLabel": "manual_research_repair_go",
+    "runId": "2026-06-25_manual_research_repair_go",
+    "snapshot": "runs/2026-06-25/manual_research_repair_go/snapshot.json.gz",
+    "exportedAt": "2026-06-25T09:20:02.467139+00:00",
+    "proposalCount": 5742,
+    "bplus": 16,
     "releaseDecision": "GO",
     "releaseGate": {
       "decision": "GO",
@@ -16,16 +16,10 @@
       "top20Precision": 1.0,
       "knownPositiveRecall": 0.8,
       "schemaPreflightPassed": true,
-      "candidatePromoteEligibleCount": 224,
-      "salesPromoteEligibleCount": 17,
-      "activeishSnsCandidateCount": 90,
-      "activeishSnsOperationCount": 76,
-      "externalPortalRecall": {
-        "caseCount": 37,
-        "includedInRankedFinal": 26,
-        "notFound": 11,
-        "sourceSeenNotRanked": 0
-      }
+      "candidatePromoteEligibleCount": 122,
+      "salesPromoteEligibleCount": 6,
+      "activeishSnsCandidateCount": 64,
+      "activeishSnsOperationCount": 57
     }
   }
 }

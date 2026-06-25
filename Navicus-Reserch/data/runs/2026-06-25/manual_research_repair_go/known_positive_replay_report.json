@@ -1,0 +1,327 @@
+{
+  "schema_version": "known_positive_replay_report_v12_4",
+  "fallback_stages": [
+    "exact_url",
+    "root_notice_url",
+    "canonical_title_issuer",
+    "seed_id",
+    "legacy_seed_key"
+  ],
+  "passed": true,
+  "failures": [],
+  "seed_count": 30,
+  "hit_count": 24,
+  "known_positive_replay_recall": 0.8,
+  "recall": 0.8,
+  "match_stage_counts": {
+    "exact_url": 25,
+    "canonical_title_issuer": 1
+  },
+  "miss_reason_counts": {
+    "seed_fetch_failed": 4,
+    "case_found_but_not_candidate": 2
+  },
+  "include_in_organic_metrics": false,
+  "rows": [
+    {
+      "seed_id": "v12_3_seed_001",
+      "official_url": "https://www.city.nichinan.lg.jp/soshikikarasagasu/sogoseisakuka/3/7079.html",
+      "title": "日南市デジタルプロモーション事業等業務委託",
+      "matched": false,
+      "match_stage": "",
+      "candidate_hit": false,
+      "miss_reason": "seed_fetch_failed",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_002",
+      "official_url": "https://www.town.nakafurano.lg.jp/hotnews/detail/00003715.html",
+      "title": "北星山森林公園プロモーション業務委託",
+      "matched": false,
+      "match_stage": "",
+      "candidate_hit": false,
+      "miss_reason": "seed_fetch_failed",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_003",
+      "official_url": "https://www.pref.wakayama.lg.jp/prefg/062400/d00222257.html",
+      "title": "令和8年度 南紀熊野ジオパークに係るライダー向けプロモーション業務",
+      "matched": false,
+      "match_stage": "",
+      "candidate_hit": false,
+      "miss_reason": "seed_fetch_failed",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_004",
+      "official_url": "https://city.kumamoto.jp/kiji00371020/3_71020_up_ydmz81pb.pdf",
+      "title": "【公募型プロポーザル】MICE誘致プロモーション業務委託について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_005",
+      "official_url": "https://city.tateyama.chiba.jp/files/300400091.pdf",
+      "title": "館山市・南房総市トライアルステイ業務委託",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_006",
+      "official_url": "https://city.shinjuku.lg.jp/content/000455632.pdf",
+      "title": "新宿駅周辺地域の安全で秩序ある環境の確保に関する条例周知・啓発業務委託に係るプロポーザルの実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_007",
+      "official_url": "https://shinchi-town.jp/uploaded/attachment/9546.pdf",
+      "title": "令和8年度しんち魅力体感・発信事業業務委託公募型プロポーザルの実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_008",
+      "official_url": "https://city.narita.chiba.jp/content/000216640.pdf",
+      "title": "成田市文化財保存活用地域計画策定支援業務委託に係る公募型プロポーザルの実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": false,
+      "miss_reason": "case_found_but_not_candidate",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_009",
+      "official_url": "https://city.edogawa.tokyo.jp/documents/70026/yoryo.pdf",
+      "title": "「散策ガイドえどぶら」企画・制作業務委託に係るプロポーザルの実施",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_010",
+      "official_url": "https://city.gojo.lg.jp/material/files/group/39/nyusatukoukoku.pdf",
+      "title": "【入札公告】五條市立西吉野農業高等学校PR動画制作業務委託(令和7年9月26日）",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_011",
+      "official_url": "https://city.nikaho.akita.jp/material/files/group/53/R8_jisshiyouryo_shiyousho.pdf",
+      "title": "【公募型プロポーザル】「移住ポータルサイトウェブ広告掲載業務委託」に関する企画提案の募集について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_012",
+      "official_url": "https://city.sado.niigata.jp/uploaded/attachment/57639.pdf",
+      "title": "「佐渡市ふるさと応援寄附金事業支援業務委託」の委託事業者を公募型プロポーザルにより募集します",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_013",
+      "official_url": "https://city.ichikawa.lg.jp/common/edu12/file/0000434296.pdf",
+      "title": "【公告】市川市二十歳の集い企画運営等業務委託の一般競争入札について",
+      "matched": true,
+      "match_stage": "canonical_title_issuer",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_014",
+      "official_url": "https://city.ichikawa.lg.jp/common/edu12/file/0000461760.pdf",
+      "title": "【公告】市川市二十歳の集い企画運営等業務委託の一般競争入札について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_015",
+      "official_url": "https://city.ichikawa.lg.jp/common/edu12/file/0000491448.pdf",
+      "title": "【公告】市川市二十歳の集い企画運営等業務委託の一般競争入札について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_016",
+      "official_url": "https://town.tobetsu.hokkaido.jp/uploaded/attachment/27196.pdf",
+      "title": "当別町魅力発信業務委託公募型プロポーザルの実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_017",
+      "official_url": "https://pref.akita.lg.jp/uploads/public/archive_0000090558_00/02_%E5%85%A5%E6%9C%AD%E5%85%AC%E5%91%8A.pdf",
+      "title": "食品ロスに関する県民意識調査業務委託に係る条件付き一般競争入札について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_018",
+      "official_url": "https://pref.kagawa.lg.jp/documents/60860/r8kokoku.pdf",
+      "title": "かがわ暮らしの認知度向上と移住促進を図る関西圏プロモーション業務委託契約の企画提案方式（プロポーザル方式）による公募について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_019",
+      "official_url": "https://town.tobetsu.hokkaido.jp/uploaded/life/41536_74654_misc.pdf",
+      "title": "当別町リモート相談窓口構築業務委託公募型プロポーザルの実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_020",
+      "official_url": "https://city.sumida.lg.jp/sangyo_jigyosya/keiyaku_nyuusatu/proposal/proposal_bosyuu/triphony-cm.files/pm-jissiyouryou.pdf",
+      "title": "すみだトリフォニーホールプロモーション事業業務委託におけるプロポーザルの実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_021",
+      "official_url": "https://city.minato.tokyo.jp/documents/175202/0yoko.pdf",
+      "title": "MINATOビジョンデザイン編集等支援業務委託事業候補者をプロポーザル方式により募集します",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_022",
+      "official_url": "https://city.ishikari.hokkaido.jp/_res/projects/default_project/_page_/001/007/092/01.yoryo.pdf",
+      "title": "石狩市勢要覧制作業務委託公募型プロポーザルの実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_023",
+      "official_url": "https://www.pref.tochigi.lg.jp/f05/shinko/2026_kankopanhu.html",
+      "title": "令和8(2026)年度観光パンフレット作成業務",
+      "matched": false,
+      "match_stage": "",
+      "candidate_hit": false,
+      "miss_reason": "seed_fetch_failed",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_024",
+      "official_url": "https://town.okuma.fukushima.jp/uploaded/attachment/11390.pdf",
+      "title": "大熊町ゼロカーボンPRイベント出展企画運営業務委託公募型プロポーザルの実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_025",
+      "official_url": "https://city.nagareyama.chiba.jp/_res/projects/default_project/_page_/001/051/027/01jissiyouryou.pdf",
+      "title": "流山市外国人観光客誘致プロモーション業務委託に係るプロポーザルの実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_026",
+      "official_url": "https://city.ota.tokyo.jp/seikatsu/sumaimachinami/machizukuri/rekishi_machi/magomebunsimura_bosyu.files/bosyuyoukou.pdf",
+      "title": "馬込文士村魅力向上整備支援業務委託事業者の募集について（公募型プロポーザル）",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_027",
+      "official_url": "https://pref.kagawa.lg.jp/documents/61774/kokoku.pdf",
+      "title": "令和8年度さぬき防災パーク防災イベント開催事業実施業務委託契約に係る企画提案方式（プロポーザル方式）による公募について（公告）",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_028",
+      "official_url": "https://city.edogawa.tokyo.jp/documents/69828/00yoko.pdf",
+      "title": "「脱炭素で暮らしの豊かさ実践事業業務委託」に係るプロポーザルの実施",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_029",
+      "official_url": "https://pref.hokkaido.lg.jp/ss/ckk/253487.html",
+      "title": "【告示】令和８年度北海道の未来共創メタバース事業委託業務総合評価一般競争入札の実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": true,
+      "miss_reason": "",
+      "include_in_organic_metrics": false
+    },
+    {
+      "seed_id": "v12_3_seed_030",
+      "official_url": "https://pref.miyazaki.lg.jp/kanko-suishin/kense/chotatsu/20260330164345.html",
+      "title": "令和8年度宮崎県観光入込客統計調査業務委託に係る条件付一般競争入札の実施について",
+      "matched": true,
+      "match_stage": "exact_url",
+      "candidate_hit": false,
+      "miss_reason": "case_found_but_not_candidate",
+      "include_in_organic_metrics": false
+    }
+  ]
+}
