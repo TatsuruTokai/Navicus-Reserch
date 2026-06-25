@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-06-25",
+  "schema_version": "wave_status_v12_4",
+  "waves": [
+    {
+      "agents": [
+        "S1-source-provenance",
+        "S2-deadline-status",
+        "S3-navicus-relevance",
+        "S4-submission-budget",
+        "S5-known-positive-coverage",
+        "S6-top20-precision"
+      ],
+      "completed_agents": [
+        "S1-source-provenance",
+        "S2-deadline-status",
+        "S3-navicus-relevance",
+        "S4-submission-budget",
+        "S5-known-positive-coverage",
+        "S6-top20-precision"
+      ],
+      "concurrency": 6,
+      "finished_at": "2026-06-25T06:48:18.873944+00:00",
+      "started_at": "",
+      "status": "completed",
+      "wave_id": "wave_001",
+      "completion_contract": "task_completion_nonempty_checked_v12_5"
+    }
+  ],
+  "updated_at": "2026-06-25T07:59:17.061221+00:00"
+}
