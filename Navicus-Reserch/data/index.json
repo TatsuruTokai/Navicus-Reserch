@@ -2,12 +2,12 @@
   "schemaVersion": "navicus_static_manifest_v1",
   "latest": {
     "runDate": "2026-06-25",
-    "runLabel": "manual_research_budget_repair",
-    "runId": "2026-06-25_manual_research_budget_repair",
-    "snapshot": "runs/2026-06-25/manual_research_budget_repair/snapshot.json.gz",
-    "exportedAt": "2026-06-25T09:52:12.675675+00:00",
-    "proposalCount": 5742,
-    "bplus": 16,
+    "runLabel": "manual_research_url_eligibility_repair",
+    "runId": "2026-06-25_manual_research_url_eligibility_repair",
+    "snapshot": "runs/2026-06-25/manual_research_url_eligibility_repair/snapshot.json.gz",
+    "exportedAt": "2026-06-25T12:17:27.019417+00:00",
+    "proposalCount": 5741,
+    "bplus": 15,
     "releaseDecision": "GO",
     "releaseGate": {
       "decision": "GO",
@@ -24,6 +24,29 @@
     }
   },
   "runs": [
+    {
+      "runDate": "2026-06-25",
+      "runLabel": "manual_research_url_eligibility_repair",
+      "runId": "2026-06-25_manual_research_url_eligibility_repair",
+      "snapshot": "runs/2026-06-25/manual_research_url_eligibility_repair/snapshot.json.gz",
+      "exportedAt": "2026-06-25T12:17:27.019417+00:00",
+      "proposalCount": 5741,
+      "bplus": 15,
+      "releaseDecision": "GO",
+      "releaseGate": {
+        "decision": "GO",
+        "passed": true,
+        "qualityPassed": true,
+        "csvDecision": "GO",
+        "top20Precision": 1.0,
+        "knownPositiveRecall": 0.8,
+        "schemaPreflightPassed": true,
+        "candidatePromoteEligibleCount": 122,
+        "salesPromoteEligibleCount": 6,
+        "activeishSnsCandidateCount": 64,
+        "activeishSnsOperationCount": 57
+      }
+    },
     {
       "runDate": "2026-06-25",
       "runLabel": "manual_research_budget_repair",
