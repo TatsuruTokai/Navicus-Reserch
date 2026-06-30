@@ -2,9 +2,9 @@
 
 Static GitHub Pages export for NAVICUS municipal SNS/proposal research.
 
-- Latest run: `2026-06-25_manual_research_url_eligibility_repair`
+- Latest run: `2026-06-29_manual`
 - Release: `GO`
-- Latest snapshot: `data/runs/2026-06-25/manual_research_url_eligibility_repair/snapshot.json.gz` (gzip-compressed JSON)
+- Latest snapshot: `data/runs/2026-06-29/manual/snapshot.json.gz` (gzip-compressed JSON)
 - Daily archive: `data/runs/YYYY-MM-DD/<run-label>/`
 
 Update command:

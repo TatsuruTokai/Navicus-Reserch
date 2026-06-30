@@ -50,7 +50,7 @@ def load_json_file(path: Path) -> dict[str, Any]:
     return dict(data) if isinstance(data, dict) else {}
 
 
-def require_release_go(run_date: str) -> dict[str, Any]:
+def load_release_artifacts(run_date: str, *, allow_no_go: bool = False) -> dict[str, Any]:
     filtered_dir = PROJECT_ROOT / "out/navicus_filtered" / run_date
     source_dir = PROJECT_ROOT / "out/navicus_sources" / run_date
     research_dir = PROJECT_ROOT / "out/navicus_research" / run_date
@@ -65,8 +65,26 @@ def require_release_go(run_date: str) -> dict[str, Any]:
         "externalPortalRecallAudit": load_json_file(research_dir / "external_portal_recall_audit.json"),
     }
     release = artifacts["releaseDecision"]
-    if release.get("decision") != "GO" or release.get("passed") is not True:
+    if release.get("decision") == "GO" and release.get("passed") is True:
+        return artifacts
+    if not allow_no_go:
         raise SystemExit(f"Release-GO artifact missing or not GO: {filtered_dir / 'release_go_decision_v12_4.json'}")
+    quality = artifacts.get("qualityReport") or {}
+    status = load_json_file(research_dir / "run_manager_status.json")
+    artifacts["releaseDecision"] = {
+        "decision": "NO-GO",
+        "passed": False,
+        "reason": "published_with_allow_no_go; strict research quality gate did not pass",
+        "status": status.get("status") or "human_review_required",
+        "productionArtifact": status.get("production_artifact", False),
+        "failures": quality.get("failures") or [],
+        "warnings": quality.get("warnings") or [],
+        "summary": {
+            "candidate_promote_eligible_count": (quality.get("coverage") or {}).get("organic_candidate_promote_eligible_count"),
+            "sales_promote_eligible_count": (quality.get("coverage") or {}).get("organic_sales_promote_eligible_count"),
+            "activeish_sns_candidate_count": quality.get("active_candidate_count"),
+        },
+    }
     return artifacts
 
 
@@ -197,6 +215,11 @@ SUMMARY_KEEP_KEYS = {
     "proposalPageUrl",
     "titleUrl",
     "sourceUrl",
+    "specificationUrl",
+    "guidelineUrl",
+    "submissionMethod",
+    "submission_method",
+    "submissionMethodEvidence",
     "confirmPoints",
     "why",
     "originStatus",
@@ -1140,8 +1163,9 @@ def build_static_app(source_js: str) -> str:
     patched = source_js.replace("function requestPayload() {", STATIC_HELPERS + "\nfunction requestPayload() {")
     patched = replace_function(patched, "async function render()", STATIC_RENDER)
     patched = replace_function(patched, "function budgetSummary(p)", STATIC_BUDGET_SUMMARY)
-    patched = replace_function(patched, "function qualificationSummary(p)", STATIC_QUALIFICATION_SUMMARY)
-    patched = replace_function(patched, "function renderEligibilityDetails(p)", STATIC_RENDER_ELIGIBILITY_DETAILS)
+    if "function qualificationBullets(p)" not in source_js:
+        patched = replace_function(patched, "function qualificationSummary(p)", STATIC_QUALIFICATION_SUMMARY)
+        patched = replace_function(patched, "function renderEligibilityDetails(p)", STATIC_RENDER_ELIGIBILITY_DETAILS)
     patched = patched.replace(
         "if (!text || text === '0' || text === '0円' || text === '未確認' || text === '不明') return '';",
         "if (!text || ['0','0円','未確認','不明','unknown','not_found','none','null'].includes(text.toLowerCase())) return '';",
@@ -1167,7 +1191,7 @@ def build_static_app(source_js: str) -> str:
 def build_index_html(source_html: str) -> str:
     html = source_html.replace("<title>NAVICUS Proposal Research DB</title>", "<title>NAVICUS Research Daily DB</title>")
     html = html.replace("<h1>NAVICUS Proposal Research DB</h1>", "<h1>NAVICUS Research Daily DB</h1>")
-    html = html.replace('<script src="app.js"></script>', '<script src="assets/app.js"></script>')
+    html = re.sub(r'<script src="app\.js(?:\?[^"]*)?"></script>', '<script src="assets/app.js"></script>', html)
     html = html.replace(
         ".db-status .row { display:flex; justify-content:space-between; gap:12px; margin:7px 0; font-size:13px; }",
         ".db-status .row { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); align-items:flex-start; gap:12px; margin:7px 0; font-size:13px; }\n"
@@ -1309,6 +1333,11 @@ def main() -> int:
         type=Path,
         help="Optional MinerU eligibility extraction report JSON.",
     )
+    parser.add_argument(
+        "--allow-no-go",
+        action="store_true",
+        help="Export a NO-GO/static review snapshot when release GO artifacts are absent or failed.",
+    )
     parser.add_argument("--root-redirect", action="store_true")
     args = parser.parse_args()
 
@@ -1318,7 +1347,7 @@ def main() -> int:
     if not server_py.exists():
         raise SystemExit(f"server.py not found: {server_py}")
 
-    release_artifacts = require_release_go(args.run_date)
+    release_artifacts = load_release_artifacts(args.run_date, allow_no_go=args.allow_no_go)
     server_module = load_db_server_module(server_py)
     mineru_report = args.mineru_eligibility_report or (
         PROJECT_ROOT / "out/navicus_research" / args.run_date / "mineru_eligibility_report.json"

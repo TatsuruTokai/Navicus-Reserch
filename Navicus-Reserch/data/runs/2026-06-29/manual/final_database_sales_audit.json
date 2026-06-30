@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "db": "/Users/tatsuru/Documents/New project 5/out/navicus_database/navicus_proposals.sqlite",
+  "runId": "2026-06-29_manual",
+  "counts": {
+    "currentView": 5833,
+    "selectable": 9,
+    "S": 0,
+    "A": 8,
+    "B": 1,
+    "sensitiveDrops": 61,
+    "latestRunRows": 1567
+  },
+  "blockingIssues": [],
+  "reviewFindings": []
+}

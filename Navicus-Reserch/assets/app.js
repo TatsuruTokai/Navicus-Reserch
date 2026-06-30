@@ -269,61 +269,112 @@ function budgetSummary(p) {
 }
 
 function cleanQualificationText(value) {
-  const text = cleanEvidenceText(value).replace(/https?:\/\/\S+/g, '').replace(/\{[^{}]*(deadline|participation|proposal|submission)[^{}]*\}/gi, ' ').replace(/\s+/g, ' ').trim();
+  const text = cleanEvidenceText(value)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/https?:\/\/\S+/g, '')
+    .replace(/\{[^{}]*(deadline|participation|proposal|submission)[^{}]*\}/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
   return text.replace(/^[:：/・\s]+|[:：/・\s]+$/g, '');
 }
 function shortenText(text, limit=220) {
   const normalized = String(text || '').replace(/\s+/g, ' ').trim();
   return normalized.length <= limit ? normalized : `${normalized.slice(0, limit).trim()}...`;
 }
-
-function renderMultilineText(value) {
-  return esc(value).replace(/\n/g, '<br>');
-}
-
-function qualificationBulletText(items) {
-  if (!Array.isArray(items)) return '';
-  return items.map(item => cleanQualificationText(item)).filter(Boolean).map(item => `- ${item}`).join('\n');
-}
-
-function qualificationSummary(p) {
-  const s = p.summary || {};
-  const bullets = qualificationBulletText(s.eligibilityBullets);
-  if (bullets) return bullets;
-  const explicit = cleanQualificationText(s.bidderQualificationSummary || s.eligibilitySummary || s.qualificationSummary)
-    .replace(/^公式PDF(?:資格要約|抽出候補)(?:（[^）]+）)?\s*[:：]\s*/, '');
-  if (explicit) return shortenText(explicit);
-  let raw = cleanQualificationText(firstValue(s.eligibility, s.participation_eligibility, s.bidEligibility, p.eligibility));
-  const term = /入札参加資格|参加資格|応募資格|資格要件|競争入札参加資格|資格者名簿|名簿|業種区分|営業種目|登録|地域要件|県内|市内|町内|本店|本社|支店|営業所|実績|許可|認定|共同企業体|JV|共同提案|単独又は共同|所在地を問わない|法人又は団体|全国|随時申請/;
-  const summaryText = cleanQualificationText(s.summary);
-  if (!raw && term.test(summaryText)) raw = summaryText;
-  if (raw) {
-    const chunks = raw.split(/[。\n\r]+/).map(x => x.trim().replace(/^[:：/・\s]+|[:：/・\s]+$/g, '')).filter(Boolean);
-    const focused = chunks.filter(chunk => term.test(chunk));
-    const unique = [...new Set(focused.length ? focused : (chunks.length ? chunks : [raw]))];
-    return shortenText(unique.slice(0, 3).join('。'));
+function cleanQualificationBullet(value) {
+  let text = cleanQualificationText(value)
+    .replace(/^公式(?:資料|PDF)?確認[:：]\s*/, '')
+    .replace(/^(?:応募資格|参加資格|入札者資格|資格要件)\s*[:：]?\s*/, '')
+    .replace(/^未確認[:：]\s*/, '未確認: ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const stopTerms = [
+    '公募スケジュール', 'スケジュール', '提案上限額', '委託期間', '業務内容',
+    '業務名', '提出書類', '質問', '審査', '評価', '契約書', '担当連絡先',
+    '募集期間', '提出期限', '企画提案書'
+  ];
+  for (const term of stopTerms) {
+    const index = text.indexOf(term);
+    if (index > 24) text = text.slice(0, index).trim();
   }
-  const statusLabel = {ELIGIBLE:'参加可能性あり', INELIGIBLE:'参加困難', NEEDS_CONFIRMATION:'要確認', UNKNOWN:'未確認'}[s.eligibilityStatus] || '未確認';
-  const reason = cleanQualificationText(s.eligibilityReason);
-  const action = cleanQualificationText(s.eligibilityNextAction);
-  const detail = [reason, action ? `確認事項: ${action}` : ''].filter(Boolean).join('。');
-  return detail ? shortenText(`${statusLabel}: ${detail}`) : '未確認: 公式資料の入札者資格欄で、地域要件・名簿登録・業種区分・JV可否・参加申請期限を確認する。';
+  text = text.replace(/[、，]\s*$/, '').replace(/[。．.]\s*$/, '').replace(/\s+\d+$/, '').trim();
+  if (/^(次の|以下の|次に掲げる)$/.test(text)) return '';
+  return shortenText(text, 140);
 }
+function splitQualificationText(value) {
+  const text = cleanQualificationText(value)
+    .replace(/^公式(?:資料|PDF)?確認[:：]\s*/, '')
+    .replace(/\s+[\/／]\s+/g, '。')
+    .replace(/[;；]/g, '。')
+    .replace(/(?:\s|^)[（(]?\d+[）)]\s*/g, '。')
+    .replace(/(?:\s|^)[①②③④⑤⑥⑦⑧⑨⑩⑪⑫]\s*/g, '。');
+  return text.split(/[。\n\r]+/)
+    .map(cleanQualificationBullet)
+    .filter(Boolean);
+}
+function uniqueQualificationBullets(items) {
+  const seen = new Set();
+  return items.filter(item => {
+    const key = item.replace(/\s+/g, '');
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+function qualificationBullets(p) {
+  const s = p.summary || {};
+  const term = /入札参加資格|参加資格|応募資格|資格要件|競争入札参加資格|資格者名簿|名簿|業種区分|営業種目|登録|地域要件|県内|市内|町内|本店|本社|支店|営業所|実績|許可|認定|共同企業体|JV|共同提案|単独又は共同|所在地を問わない|法人又は団体|全国|随時申請|指名停止|税|暴力団|未納|滞納/;
+  const fromArrays = [
+    ...arr(s.eligibilityBullets),
+    ...arr(s.bidderQualificationBullets),
+    ...arr(s.qualificationBullets),
+  ].map(cleanQualificationBullet).filter(Boolean);
+  const arrayBullets = uniqueQualificationBullets(fromArrays).filter(item => term.test(item) || fromArrays.length <= 3);
+  if (arrayBullets.length) return arrayBullets.slice(0, 5);
 
+  const textSources = [
+    s.bidderQualificationSummary,
+    s.eligibilitySummary,
+    s.qualificationSummary,
+    firstValue(s.eligibility, s.participation_eligibility, s.bidEligibility, p.eligibility),
+  ].filter(Boolean);
+  const textBullets = uniqueQualificationBullets(textSources.flatMap(splitQualificationText));
+  const focused = textBullets.filter(item => term.test(item));
+  if (focused.length || textBullets.length) return (focused.length ? focused : textBullets).slice(0, 5);
 
+  const summaryText = cleanQualificationText(s.summary);
+  if (term.test(summaryText)) {
+    const summaryBullets = uniqueQualificationBullets(splitQualificationText(summaryText));
+    if (summaryBullets.length) return summaryBullets.slice(0, 5);
+  }
+
+  const statusLabel = {ELIGIBLE:'参加可能性あり', INELIGIBLE:'参加困難', NEEDS_CONFIRMATION:'要確認', UNKNOWN:'未確認'}[s.eligibilityStatus] || '未確認';
+  const reason = cleanQualificationBullet(s.eligibilityReason);
+  const action = cleanQualificationBullet(s.eligibilityNextAction);
+  return [
+    `判定: ${statusLabel}`,
+    reason ? `理由: ${reason}` : '',
+    action ? `確認事項: ${action}` : '確認事項: 公式資料の入札者資格欄で、地域要件・名簿登録・業種区分・JV可否・参加申請期限を確認する',
+  ].filter(Boolean);
+}
+function qualificationSummary(p) {
+  return qualificationBullets(p).join('。');
+}
+function renderQualificationBullets(p, limit=5) {
+  return qualificationBullets(p).slice(0, limit).map(item => `<li>${esc(item)}</li>`).join('');
+}
 function renderEligibilityDetails(p) {
   const s = p.summary || {};
+  const bullets = renderQualificationBullets(p, 7);
   const rows = [
-    ['要約', qualificationSummary(p)],
     ['判定', s.eligibilityStatus || 'UNKNOWN'],
     ['理由', s.eligibilityReason || ''],
     ['次アクション', s.eligibilityNextAction || ''],
     ['根拠URL', s.eligibilitySourceUrl || ''],
-    ['根拠URL', s.eligibilitySourceUrl || ''],
   ];
-  return rows.filter(([,v]) => v !== '' && v !== null && v !== undefined).map(([k,v]) => `<li>${esc(k)}: ${renderMultilineText(v)}</li>`).join('');
+  const meta = rows.filter(([,v]) => v !== '' && v !== null && v !== undefined).map(([k,v]) => `<li class="eligibility-meta">${esc(k)}: ${esc(v)}</li>`).join('');
+  return `${bullets}${meta}`;
 }
-
 function renderCriteria(p) {
   const c = (p.summary && p.summary.criteria) || {};
   const items = [
@@ -389,7 +440,6 @@ function renderCard(p) {
   const stopped = p.latest_status === 'DROP' || s.stopped === true;
   const labels = selectedLabels(p, sims, follows, seen);
   const originLine = s.originDetail || `初出: ${p.first_seen_run_date || p.first_seen_run_id || '-'} / 最新: ${p.updated_run_id || '-'}`;
-  const eligibilityText = qualificationSummary(p);
   const budget = budgetSummary(p);
   return `<article class="proposal-card ${stopped ? 'stopped' : ''}" style="--grade-color:${GRADE_COLOR[grade] || 'var(--F)'}">
     <div class="card-head">
@@ -401,7 +451,7 @@ function renderCard(p) {
       <section class="tile tile-grade"><div class="grade-badge">${esc(grade)}</div><div class="score-line">${esc(p.latest_status || '-')} / ${esc(s.decision || s.priority || '')}${esc(bestLine)}</div></section>
       <section class="tile tile-content"><div class="tile-kicker">CONTENT</div><p>${esc(s.summary || s.historicalSimilaritySummary || '内容要約なし')}</p></section>
       <section class="tile tile-deadline"><div class="tile-kicker">DEADLINE</div><div class="days ${days.cls}">${esc(days.text)}</div><div class="score-line">${esc(days.note)}</div>${renderDeadlineRows(p)}</section>
-      <section class="tile tile-eligibility"><div class="tile-kicker">入札者資格</div><p>${renderMultilineText(eligibilityText)}</p></section>
+      <section class="tile tile-eligibility"><div class="tile-kicker">入札者資格</div><ul class="eligibility-bullets">${renderQualificationBullets(p)}</ul></section>
       <section class="tile tile-budget"><div class="tile-kicker">BUDGET</div><div class="budget-amount ${budget.cls}">${esc(budget.amount)}</div><div class="budget-meta">${esc(budget.meta)}</div></section>
       <section class="tile tile-issuer"><div class="tile-kicker">ISSUER</div><div class="issuer-name">${esc(p.issuer)}</div><div class="issuer-meta">${esc(p.historical_similarity_status || '')}</div></section>
       <section class="tile tile-labels"><div class="tile-kicker">LABELS</div><div class="chips">${labels.map(label => `<span class="chip ${chipClass(label)}">${esc(label)}</span>`).join('')}</div></section>
