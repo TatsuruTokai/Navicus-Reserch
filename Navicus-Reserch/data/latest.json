@@ -1,12 +1,12 @@
 {
   "latest": {
-    "runDate": "2026-06-29",
+    "runDate": "2026-06-30",
     "runLabel": "manual",
-    "runId": "2026-06-29_manual",
-    "snapshot": "runs/2026-06-29/manual/snapshot.json.gz",
-    "exportedAt": "2026-06-30T12:43:47.487744+00:00",
-    "proposalCount": 5833,
-    "bplus": 9,
+    "runId": "2026-06-30_manual",
+    "snapshot": "runs/2026-06-30/manual/snapshot.json.gz",
+    "exportedAt": "2026-06-30T13:07:33.439581+00:00",
+    "proposalCount": 6628,
+    "bplus": 10,
     "releaseDecision": "GO",
     "releaseGate": {
       "decision": "GO",
@@ -16,10 +16,10 @@
       "top20Precision": 1.0,
       "knownPositiveRecall": 0.8,
       "schemaPreflightPassed": true,
-      "candidatePromoteEligibleCount": 103,
-      "salesPromoteEligibleCount": 2,
-      "activeishSnsCandidateCount": 48,
-      "activeishSnsOperationCount": 40
+      "candidatePromoteEligibleCount": 119,
+      "salesPromoteEligibleCount": 3,
+      "activeishSnsCandidateCount": 61,
+      "activeishSnsOperationCount": 53
     }
   }
 }

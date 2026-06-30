@@ -1,0 +1,1445 @@
+{
+  "strict": true,
+  "allow_short_smoke_test": false,
+  "quality_tier": "staging",
+  "run_date": "2026-06-30",
+  "quality_reference_date": "2026-06-30",
+  "strict_zero_counters": {
+    "source_urls_cross_case_count": 0,
+    "malformed_source_url_count": 0,
+    "generic_asset_evidence_count": 0,
+    "official_source_type_host_mismatch_count": 0,
+    "expired_future_actionable_deadline_count": 0,
+    "cross_issuer_deadline_combo_reuse_count": 0,
+    "cross_case_overview_prefix_reuse_count": 0,
+    "cross_case_contract_prefix_reuse_count": 0,
+    "cross_case_scored_text_reuse_count": 0,
+    "non_case_page_promoted_count": 0,
+    "repair_seed_counted_as_organic_count": 0
+  },
+  "strict_zero_samples": {
+    "cross_case_contract_prefix_reuse_count": [],
+    "cross_case_overview_prefix_reuse_count": [],
+    "cross_case_scored_text_reuse_count": [],
+    "cross_issuer_deadline_combo_reuse_count": [],
+    "expired_future_actionable_deadline_count": [],
+    "generic_asset_evidence_count": [],
+    "malformed_source_url_count": [],
+    "non_case_page_promoted_count": [],
+    "official_source_type_host_mismatch_count": [],
+    "source_urls_cross_case_count": []
+  },
+  "case_evidence_ledger_digest_supplied": true,
+  "case_evidence_ledger_digest": {
+    "ledger_record_count": 133503,
+    "ledger_schema_version": "case_evidence_ledger_v12_4",
+    "official_case_evidence_count": 111956,
+    "quarantined_asset_count": 2593,
+    "run_date": "2026-06-30",
+    "schema_version": "case_evidence_ledger_digest_v12_4",
+    "source_url_policy": "source_urls are derived only from source_kind=official_case_evidence AND case_owned=true AND is_trace=false AND is_asset=false",
+    "strict_zero_counters": {
+      "cross_case_contract_prefix_reuse_count": 0,
+      "cross_case_overview_prefix_reuse_count": 0,
+      "cross_case_scored_text_reuse_count": 0,
+      "cross_issuer_deadline_combo_reuse_count": 0,
+      "expired_future_actionable_deadline_count": 0,
+      "generic_asset_evidence_count": 0,
+      "malformed_source_url_count": 0,
+      "non_case_page_promoted_count": 0,
+      "official_source_type_host_mismatch_count": 0,
+      "source_urls_cross_case_count": 0
+    },
+    "strict_zero_samples": {
+      "cross_case_contract_prefix_reuse_count": [],
+      "cross_case_overview_prefix_reuse_count": [],
+      "cross_case_scored_text_reuse_count": [],
+      "cross_issuer_deadline_combo_reuse_count": [],
+      "expired_future_actionable_deadline_count": [],
+      "generic_asset_evidence_count": [],
+      "malformed_source_url_count": [],
+      "non_case_page_promoted_count": [],
+      "official_source_type_host_mismatch_count": [],
+      "source_urls_cross_case_count": []
+    },
+    "trace_url_count": 21547
+  },
+  "coverage": {
+    "organic_active_candidate_count": 9,
+    "organic_candidate_promote_eligible_count": 14,
+    "organic_sales_promote_eligible_count": 3,
+    "active_prefecture_count": 5
+  },
+  "golden_eval": {
+    "top20_precision": 1.0,
+    "top50_precision": null,
+    "candidate_recall": null,
+    "sales_recall": null,
+    "boundary_disagreement_rate": null
+  },
+  "coverage_smoke_mode": false,
+  "yield_smoke_mode": false,
+  "field_smoke_mode": false,
+  "passed": true,
+  "failures": [],
+  "warnings": [
+    "budget value extraction rate gate is disabled; amount status is checked instead",
+    "classified records with department placeholder/missing: 1705",
+    "duplicate candidate rows merged before render: 51"
+  ],
+  "repair_recommendations": [],
+  "total_classified": 2597,
+  "bucket_counts": {
+    "target": 201,
+    "adjacent": 71,
+    "diamond": 69,
+    "review": 1345,
+    "past_reference": 54,
+    "out_of_scope_print": 11,
+    "exclude": 846
+  },
+  "active_status_counts": {
+    "active": 64,
+    "active_unknown_deadline_missing": 1481,
+    "past_reference": 556,
+    "proposal_closed": 350,
+    "participation_closed": 130,
+    "expired": 16
+  },
+  "classified_prefecture_counts": {
+    "香川県": 109,
+    "山梨県": 32,
+    "佐賀県": 29,
+    "千葉県": 159,
+    "大阪府": 70,
+    "山形県": 28,
+    "福島県": 106,
+    "北海道": 174,
+    "熊本県": 62,
+    "福岡県": 85,
+    "東京都": 215,
+    "京都府": 36,
+    "福井県": 45,
+    "三重県": 24,
+    "鹿児島県": 161,
+    "長崎県": 45,
+    "新潟県": 125,
+    "秋田県": 75,
+    "高知県": 53,
+    "和歌山県": 24,
+    "静岡県": 112,
+    "滋賀県": 24,
+    "大分県": 21,
+    "岩手県": 66,
+    "岐阜県": 16,
+    "宮崎県": 108,
+    "宮城県": 25,
+    "石川県": 11,
+    "神奈川県": 30,
+    "兵庫県": 45,
+    "茨城県": 85,
+    "長野県": 39,
+    "奈良県": 38,
+    "埼玉県": 108,
+    "愛知県": 45,
+    "沖縄県": 57,
+    "広島県": 18,
+    "群馬県": 12,
+    "栃木県": 41,
+    "山口県": 8,
+    "徳島県": 2,
+    "愛媛県": 6,
+    "全国": 3,
+    "富山県": 11,
+    "青森県": 3,
+    "岡山県": 1,
+    "島根県": 5
+  },
+  "active_candidate_count": 3,
+  "context_pack_item_count": 21,
+  "context_pack_char_count": 46845,
+  "coverage_check": {
+    "expected_municipality_count": 1741,
+    "unique_municipality_count": 1741,
+    "expected_prefecture_main_count": 47,
+    "expected_public_body_count": 1788,
+    "all_47_prefectures_present": true,
+    "all_registry_rows_in_frontier": true,
+    "no_duplicate_municipality_keys": true,
+    "registry_coverage_count": 1788,
+    "source_verified_public_body_count": 1788,
+    "source_verified_coverage_count": 1788,
+    "needs_rediscovery_count": 0,
+    "registry_status_counts": {
+      "active_verified": 1788
+    },
+    "prefecture_main_planned_count": 47,
+    "public_body_model_count": 1788
+  },
+  "coverage_summary": {
+    "schema_version": "coverage_report_v12_4",
+    "run_date": "2026-06-30",
+    "coverage_smoke_mode": false,
+    "coverage_basis": "p1_source_endpoint_registry",
+    "expected_municipality_count": 1741,
+    "expected_prefecture_main_count": 47,
+    "expected_public_body_count": 1788,
+    "unique_municipality_count": 1741,
+    "prefecture_main_body_count": 47,
+    "prefecture_count_in_registry": 47,
+    "public_body_model_count": 1788,
+    "registry_public_body_count": 1788,
+    "source_registry_rows": 1933,
+    "registry_row_count": 1741,
+    "all_47_prefectures_present": true,
+    "missing_prefectures": [],
+    "all_registry_rows_in_frontier": true,
+    "missing_frontier_rows": [],
+    "no_duplicate_municipality_keys": true,
+    "duplicate_municipality_keys": [],
+    "source_verified_public_body_count": 1788,
+    "source_verified_coverage_count": 1788,
+    "needs_rediscovery_count": 0,
+    "all_registry_needs_rediscovery_count": 90,
+    "source_verified_coverage": {
+      "expected": 1788,
+      "processed": 1788,
+      "processed_or_planned": 1788,
+      "needs_rediscovery": 0
+    },
+    "registry_status_counts": {
+      "active_verified": 1788
+    },
+    "public_body_registry_status_counts": {
+      "active_verified": 1788
+    },
+    "all_registry_status_counts": {
+      "active_verified": 1788,
+      "needs_url_repair": 47,
+      "active": 6,
+      "portal_discovery_required": 43,
+      "entry_probable_needs_verify": 22,
+      "web_verified_entry": 27
+    },
+    "source_registry_report": "/Users/tatsuru/Documents/New project 5/out/navicus_sources/2026-06-30/source_registry_report.json",
+    "source_recall_report": "/Users/tatsuru/Documents/New project 5/out/navicus_sources/2026-06-30/source_recall_report.json",
+    "source_recall_summary": {
+      "source_count": 894,
+      "total_documents": 69804,
+      "total_candidates": 5031,
+      "probe_depth_candidate_count": 5031,
+      "probe_depth_candidate_count_source": "candidate_extraction_report.candidate_count",
+      "candidate_extraction_report": "/Users/tatsuru/Documents/New project 5/out/navicus_sources/2026-06-30/candidate_extraction_report.json",
+      "zero_candidate_sources": 893
+    },
+    "coverage_report": "/Users/tatsuru/Documents/New project 5/out/navicus_weekly/2026-06-30/coverage_report.json",
+    "wave_status": "/Users/tatsuru/Documents/New project 5/out/navicus_sources/2026-06-30/wave_status.json",
+    "candidate_jsonl": "/Users/tatsuru/Documents/New project 5/out/navicus_sources/2026-06-30/p1_proposal_candidates.jsonl"
+  },
+  "research_contract": {
+    "duration_minutes": null,
+    "duration_source": null,
+    "subagent_count_observed": 6,
+    "real_subagent_count_from_wave_status": 6,
+    "max_workers_counted_as_subagents": false,
+    "schema_error_count": 0,
+    "raw_document_text_returned_to_parent": false,
+    "task_completion_count": 7,
+    "unprocessed_frontier_count": 0,
+    "blocked_visit_count": 0,
+    "frontier_task_id_count": null,
+    "processed_frontier_task_count": null,
+    "visit_depth_metrics": {
+      "task_completion_count": 7,
+      "blocked_visit_count": 0,
+      "avg_checked_queries": 3.0,
+      "avg_checked_urls": 17.143,
+      "avg_checked_documents": 10.571,
+      "depth_satisfied_rate": 1.0,
+      "missing_checked_queries": 1,
+      "missing_checked_urls": 1
+    },
+    "wave_status": {
+      "wave_count": 1,
+      "max_concurrent_observed": 6,
+      "completed_wave_count": 1,
+      "completed_agent_count": 6
+    }
+  },
+  "probe_depth_check": {
+    "expanded_task_count": 76768,
+    "root_task_count": 1788
+  },
+  "candidate_yield_check": {
+    "schema_version": "navicus_benchmark_provenance_v12_6",
+    "benchmark_name": "NJSS",
+    "observed_at": "2026-06-25T00:00:00+09:00",
+    "query": "SNS",
+    "scope": "active public-sector SNS-related procurement records used as a teacher/recall comparison for NAVICUS candidate yield",
+    "source_category": "external_portal_teacher_recall_comparison",
+    "raw_count": 48,
+    "sanitized_snapshot_hash": "sha256:76ccfa2d5f1a2bb1ef22ee9cf8d72fe6f99be9f4bb624e09f5f7821a0e35a0a6",
+    "snapshot_version": "njss-sns-baseline-manual-v0",
+    "official_evidence": false,
+    "comparison_caveat": "External portal benchmark for recall/teacher comparison only; not official evidence for any individual municipal proposal.",
+    "benchmark_provenance_valid": true,
+    "total_classified": 2597,
+    "active_candidate_count": 3,
+    "activeish_candidate_count": 109,
+    "effective_active_candidate_count_for_yield": 109,
+    "relevant_or_review_count": 1686,
+    "prefectures_with_classified_records": 47,
+    "merged_candidate_records": 2648,
+    "active_target_sns_count": 3,
+    "active_target_adjacent_diamond_count": 9,
+    "activeish_benchmark_candidate_count": 109,
+    "activeish_sns_candidate_count": 61,
+    "activeish_sns_title_count": 7,
+    "activeish_sns_operation_count": 53,
+    "summary_activeish_benchmark_candidate_count": 109,
+    "summary_activeish_sns_candidate_count": 61,
+    "summary_activeish_sns_title_count": 7,
+    "summary_activeish_sns_operation_count": 53,
+    "required_activeish_sns_candidate_records": 48,
+    "acquisition_cadence": "tier_a_daily",
+    "required_activeish_sns_title_records": 0,
+    "required_activeish_sns_operation_records": 30,
+    "baseline_active_sns_count_user_supplied": 48,
+    "sns_njss_gate_passed": true,
+    "sns_operation_gate_passed": true,
+    "candidate_yield_floor_mode": "failure"
+  },
+  "field_quality_check": {
+    "official_source_rate_for_candidates": 1.0,
+    "official_source_rate_for_candidates_min": 0.95,
+    "individual_notice_or_document_rate": 0.958,
+    "individual_notice_or_document_rate_min": 0.85,
+    "required_basic_field_checked_rate": 1.0,
+    "required_basic_field_checked_rate_min": 0.95,
+    "field_evidence_rate_for_active_candidates": 1.0,
+    "field_evidence_rate_for_active_candidates_min": 0.9,
+    "active_candidate_count_for_deadline": 3,
+    "deadline_extraction_rate": 1.0,
+    "deadline_extraction_rate_min": 0.95
+  },
+  "v8_candidate_quality_check": {
+    "inactive_records_in_active_candidates": 0,
+    "active_blocked_document_role_count": 0,
+    "active_failed_candidate_promote_rule_count": 0,
+    "active_not_biddable_count": 0,
+    "active_without_actionable_deadline_count": 0,
+    "contract_period_used_as_active_deadline_count": 0,
+    "invalid_money_found_count": 0,
+    "upper_found_missing_snippet_count": 0,
+    "upper_snippet_too_long_count": 0,
+    "upper_snippet_dirty_count": 0,
+    "scheduled_price_status_inconsistent_count": 0,
+    "dirty_evidence_snippet_count": 0,
+    "negative_ontology_promoted_count": 0,
+    "sales_notified_not_biddable_count": 0,
+    "active_unknown_notified_count": 0,
+    "notified_without_promote_gate_count": 0,
+    "notified_without_sales_promote_count": 0,
+    "quasi_public_notified_count": 0,
+    "active_conflict_notified_count": 0,
+    "date_only_immediate_count": 0,
+    "low_score_unknown_sales_count": 0,
+    "source_urls_unrelated_official_domain_count": 40,
+    "source_urls_cross_case_count": 40,
+    "malformed_source_url_count": 0,
+    "generic_asset_evidence_count": 2,
+    "official_source_type_host_mismatch_count": 10,
+    "non_case_page_promoted_count": 0,
+    "repair_seed_counted_as_organic_count": 0,
+    "sales_notification_many_source_hosts_count": 0,
+    "upper_limit_evidence_source_mismatch_count": 0,
+    "sales_notification_upper_limit_missing_source_url_count": 0,
+    "upper_limit_reused_snippet_group_count": 0,
+    "upper_limit_reused_snippet_row_count": 0,
+    "participation_after_proposal_count": 0,
+    "deadline_roles_collapsed_to_same_date_count": 0,
+    "manual_review_next_actions_false_count": 0,
+    "expired_future_deadline_conflict_count": 0,
+    "expired_future_actionable_deadline_count": 0,
+    "duplicate_canonical_id_count": 0,
+    "duplicate_canonical_case_key_count": 0,
+    "duplicate_root_notice_url_count": 0,
+    "shared_attachment_unmerged_count": 0,
+    "public_body_title_unmerged_count": 0,
+    "sales_closed_case_conflict_count": 0,
+    "issuer_correction_pref_mismatch_count": 0,
+    "issuer_correction_anchor_missing_count": 0,
+    "active_unknown_without_reason_count": 0,
+    "cross_case_overview_prefix_reuse_count": 0,
+    "cross_case_scored_text_reuse_count": 0,
+    "cross_case_contract_prefix_reuse_count": 1,
+    "cross_case_deadline_combo_reuse_count": 0,
+    "cross_issuer_deadline_combo_reuse_count": 0,
+    "cross_case_overview_prefix_reuse_sample": [],
+    "cross_case_scored_text_reuse_sample": [],
+    "cross_case_contract_prefix_reuse_sample": [
+      [
+        "履行期間の始期日となる業務に適用第１章総則１．１適用１．建築保全業務委託共通仕様書(以下「共通仕様書」という。)は、建築物及びその付帯施設(以下「建築物等」と",
+        {
+          "row_count": 16,
+          "issuer_count": 1
+        }
+      ]
+    ],
+    "cross_case_deadline_combo_reuse_sample": [],
+    "active_date_only_deadline_count": 0,
+    "active_deadline_missing_count": 0,
+    "active_submission_unclear_count": 0,
+    "active_candidate_submission_unclear_count": 0,
+    "active_sales_submission_unclear_count": 0,
+    "active_submission_unclear_reviewed_count": 0,
+    "active_submission_unclear_unreviewed_count": 0,
+    "active_low_confidence_count": 0,
+    "department_placeholder_count": 1705,
+    "duplicate_canonical_ids_sample": [],
+    "duplicate_canonical_case_keys_sample": [],
+    "duplicate_root_notice_urls_sample": [],
+    "shared_attachment_unmerged_sample": [],
+    "public_body_title_unmerged_sample": [],
+    "sales_closed_case_conflict_sample": []
+  },
+  "field_quality_summary": {
+    "candidate_count": 2597,
+    "active_candidate_count": 3,
+    "active_target_sns_count": 0,
+    "active_target_sns_operation_count": 0,
+    "active_target_adjacent_diamond_count": 3,
+    "activeish_benchmark_candidate_count": 109,
+    "activeish_sns_candidate_count": 61,
+    "activeish_sns_title_count": 7,
+    "activeish_sns_operation_count": 53,
+    "official_source_count": 2597,
+    "official_source_rate_for_candidates": 1.0,
+    "individual_notice_or_document_count": 2488,
+    "individual_notice_or_document_rate": 0.958,
+    "required_basic_field_checked_count": 45,
+    "required_basic_field_total": 45,
+    "required_basic_field_checked_rate": 1.0,
+    "field_evidence_checked_count_for_active_candidates": 39,
+    "field_evidence_required_total_for_active_candidates": 39,
+    "field_evidence_rate_for_active_candidates": 1.0,
+    "active_candidates_with_any_field_evidence_count": 3,
+    "active_candidate_count_for_deadline": 3,
+    "deadline_extraction_rate": 1.0,
+    "actionable_deadline_extraction_rate": 1.0,
+    "deadline_datetime_precision_rate": 0.6667,
+    "deadline_precision_counts": {
+      "datetime": 418,
+      "missing": 2179
+    },
+    "active_deadline_precision_counts": {
+      "datetime": 2,
+      "missing": 1
+    },
+    "deep_fetch_target_count_for_budget": 1142,
+    "budget_status_checked_rate": 1.0,
+    "budget_extraction_rate": 0.0026,
+    "upper_limit_status_counts": {
+      "not_found": 2247,
+      "unclear": 341,
+      "not_applicable": 0,
+      "needs_review": 0,
+      "not_public": 0,
+      "found": 9,
+      "blank": 0,
+      "other": 0
+    },
+    "active_upper_limit_status_counts": {
+      "not_found": 0,
+      "unclear": 2,
+      "not_applicable": 0,
+      "needs_review": 0,
+      "not_public": 0,
+      "found": 1,
+      "blank": 0,
+      "other": 0
+    },
+    "upper_limit_found_count": 9,
+    "upper_limit_not_public_count": 0,
+    "upper_limit_not_found_count": 2247,
+    "upper_limit_unclear_count": 341,
+    "submission_unclear_count": 1234,
+    "active_submission_unclear_count": 0,
+    "active_candidate_submission_unclear_count": 0,
+    "active_sales_submission_unclear_count": 0,
+    "active_submission_unclear_reviewed_count": 0,
+    "active_submission_unclear_unreviewed_count": 0,
+    "issuer_department_placeholder_count": 1705,
+    "deadline_missing_count": 2033,
+    "active_deadline_missing_count": 0,
+    "merged_duplicate_rows_count": 2434,
+    "document_role_counts": {
+      "spec": 962,
+      "notice": 353,
+      "guide": 88,
+      "unknown_document_fetched": 720,
+      "unknown": 42,
+      "result": 31,
+      "form": 286,
+      "qa": 108,
+      "criteria": 7
+    },
+    "confidence_counts": {
+      "high": 55,
+      "medium": 2179,
+      "low": 267,
+      "needs_review": 96
+    },
+    "active_confidence_counts": {
+      "high": 3
+    },
+    "active_candidate_promote_fail_count": 0,
+    "required_field_rates": {
+      "issuer.organization": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "issuer.department": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "title": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "overview": {
+        "checked": 1891,
+        "total": 2597,
+        "rate": 0.7281
+      },
+      "public_notice.public_date": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "deadlines.participation_deadline": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "deadlines.proposal_deadline": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "contract.contract_period_text": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "contract.performance_place": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "amounts.upper_limit_status": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "amounts.scheduled_price_status": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "contract.contract_method": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "submission.submission_method": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "deadlines.question_deadline": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      },
+      "deadlines.document_submission_deadline": {
+        "checked": 2597,
+        "total": 2597,
+        "rate": 1.0
+      }
+    }
+  },
+  "html_output_check": {
+    "required_html_outputs": [
+      "index.html",
+      "navicus_report.html",
+      "navicus_all_classified.html",
+      "navicus_candidates_active.html",
+      "excluded_or_review.html",
+      "navicus_field_quality.html",
+      "navicus_coverage_1788.html",
+      "navicus_all_classified_page_001.html",
+      "navicus_candidates_active_page_001.html"
+    ],
+    "missing_html_outputs": [],
+    "target_blank_without_rel": 0,
+    "target_blank_without_rel_files": []
+  },
+  "full_export_check": {
+    "required_full_exports": [
+      "navicus_all_classified.json",
+      "navicus_candidates_active.json",
+      "navicus_summary.csv",
+      "public_body_coverage_summary.json",
+      "navicus_field_quality.json",
+      "navicus_context_pack.json",
+      "navicus_render_audit.json",
+      "navicus_candidates_participation_closed.json"
+    ],
+    "missing_full_exports": [],
+    "csv_schema": {
+      "path": "/Users/tatsuru/Documents/New project 5/out/navicus_filtered/2026-06-30/navicus_summary.csv",
+      "present": true,
+      "header_count": 118,
+      "expected_count": 118,
+      "missing_fields": [],
+      "extra_fields": [],
+      "audit_fields_present": [
+        "candidate_promote_rule_eligible",
+        "benchmark_candidate_eligible",
+        "precision_guard_blocked",
+        "precision_guard_reasons",
+        "review_severity",
+        "review_scope",
+        "candidate_review_eligible",
+        "promotion_blocking_reasons",
+        "deadline_events",
+        "contract_period_source_url",
+        "performance_place_source_url",
+        "warning_reasons",
+        "review_signals",
+        "llm_ontology_review_required",
+        "document_submission_deadline_original",
+        "legacy_sales_safe_candidate_eligible",
+        "candidate_blocking_reasons",
+        "sales_blocking_reasons",
+        "scored_text_source_urls",
+        "scored_text_case_owned",
+        "issuer_domain_correction_reason",
+        "upper_limit_clear_reason"
+      ]
+    }
+  },
+  "client_facing_output_check": {
+    "scanned_files": [
+      "index.html",
+      "navicus_report.html",
+      "navicus_all_classified.html",
+      "navicus_candidates_active.html",
+      "excluded_or_review.html",
+      "navicus_public_summary.csv",
+      "navicus_public_cards.json"
+    ],
+    "missing_files": [],
+    "leak_count": 0,
+    "leak_samples": []
+  },
+  "render_audit_check": {
+    "dedupe_before_render": true,
+    "dedupe_audit": {
+      "dedupe_algorithm": "v10_union_find_root_components_body_title_source_overlap",
+      "pre_dedupe_count": 2648,
+      "source_overlap_edge_count": 24,
+      "body_title_edge_count": 45,
+      "post_dedupe_count": 2597,
+      "duplicate_rows_removed": 51,
+      "duplicate_url_rows_removed": 1,
+      "pre_duplicate_root_notice_key_count": 0,
+      "pre_duplicate_components_key_count": 41,
+      "duplicate_root_notice_url_count": 0,
+      "duplicate_root_notice_keys_sample": [],
+      "duplicate_canonical_case_key": 0,
+      "duplicate_canonical_key_count": 0,
+      "duplicate_canonical_keys_sample": [],
+      "duplicate_components_key_count": 0,
+      "duplicate_components_keys_sample": [],
+      "cross_case_amount_reuse": {
+        "upper_limit_reused_snippet_group_count": 0,
+        "upper_limit_reused_snippet_row_count": 0,
+        "samples": []
+      },
+      "cross_issuer_deadline_combo_reuse": {
+        "cross_issuer_deadline_combo_reuse_group_count": 0,
+        "cross_issuer_deadline_combo_reuse_row_count": 0,
+        "samples": []
+      },
+      "production_export_audit": {
+        "duplicate_root_notice_url_count": 0,
+        "duplicate_root_notice_keys_sample": [],
+        "duplicate_canonical_case_key": 0,
+        "duplicate_canonical_case_keys_sample": [],
+        "mixed_immediate_daily_case_count": 0,
+        "mixed_immediate_daily_case_keys_sample": []
+      }
+    },
+    "canonical_id_count": 2597,
+    "duplicate_canonical_id_count": 0,
+    "duplicate_canonical_ids_sample": [],
+    "all_classified_rendered_rows": 2597,
+    "active_rendered_rows": 3,
+    "active_rows_match_json": true,
+    "active_participation_closed_count": 0,
+    "participation_closed_all_count": 130,
+    "excluded_from_active_table_count": 338,
+    "excluded_from_active_table_counts": {
+      "active": 6,
+      "active_unknown_deadline_missing": 94,
+      "past_reference": 108,
+      "proposal_closed": 95,
+      "participation_closed": 35
+    },
+    "all_bucket_counts": {
+      "target": 201,
+      "adjacent": 71,
+      "diamond": 69,
+      "review": 1345,
+      "past_reference": 54,
+      "out_of_scope_print": 11,
+      "exclude": 846
+    },
+    "all_active_status_counts": {
+      "active": 64,
+      "active_unknown_deadline_missing": 1481,
+      "past_reference": 556,
+      "proposal_closed": 350,
+      "participation_closed": 130,
+      "expired": 16
+    },
+    "active_bucket_counts": {
+      "adjacent": 1,
+      "diamond": 2
+    },
+    "active_active_status_counts": {
+      "active": 3
+    }
+  },
+  "top20_precision_check": {
+    "schema_version": "top20_precision_report_v12_4",
+    "report_present": true,
+    "status": "passed",
+    "labels_required": false,
+    "passed": true,
+    "failures": [],
+    "warnings": [],
+    "row_count": 20,
+    "top_n": 20,
+    "judged_count": 20,
+    "predicted_positive_count": 4,
+    "evaluated_prediction_count": 4,
+    "true_positive_count": 4,
+    "precision_judged_only": 1.0,
+    "top20_precision": 1.0,
+    "sales_top_n": 10,
+    "sales_judged_count": 0,
+    "sales_true_positive_count": 0,
+    "sales_precision_top10": null,
+    "pipeline_leakage_fields": [],
+    "unjudged_count": 0,
+    "unlabeled_count": 0,
+    "run_id": "2026-06-30",
+    "attempt_id": "2026-06-30-121002-076abe9d",
+    "rules_digest": "",
+    "candidate_set_digest": "8d180087355c0ef6b744bdf6bd292e1a4f472fba329639bcf9115ae0c467b945",
+    "prediction_source_supplied": true,
+    "prediction_joined_count": 20,
+    "prediction_missing_count": 0,
+    "prediction_duplicate_key_count": 0,
+    "label_duplicate_key_count": 0,
+    "label_candidate_set_digest": "271e714334d236a789a157318b9a03a2b3e433f81d9fc96c9f1bede0c9a2cc39",
+    "prediction_candidate_set_digest": "8d180087355c0ef6b744bdf6bd292e1a4f472fba329639bcf9115ae0c467b945",
+    "joined_candidate_set_digest": "271e714334d236a789a157318b9a03a2b3e433f81d9fc96c9f1bede0c9a2cc39",
+    "candidate_set_digest_match": true
+  },
+  "golden_label_contract": {
+    "report_present": false
+  },
+  "subagent_report_summary": {
+    "version": "v12.4-staging-full-ledger-subagent-contract",
+    "finished_at": "2026-06-30T12:37:28.285423+00:00",
+    "input_dir": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs",
+    "output_path": "/Users/tatsuru/Documents/New project 5/out/navicus_weekly/2026-06-30/municipal_proposals.json",
+    "report_path": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_merge_report.json",
+    "input_file_count": 7,
+    "superseded_record_count": 0,
+    "agent_count": 8,
+    "agents_seen": [
+      "S1-source-provenance",
+      "S2-deadline-status",
+      "S3-navicus-relevance",
+      "S4-submission-budget",
+      "S5-known-positive-coverage",
+      "S6-top20-precision",
+      "p1-candidate-extractor",
+      "p1-ingestion-canonical"
+    ],
+    "records_by_agent": {
+      "S1-source-provenance": 4,
+      "S2-deadline-status": 6,
+      "S3-navicus-relevance": 5,
+      "S4-submission-budget": 5,
+      "S5-known-positive-coverage": 3,
+      "S6-top20-precision": 5,
+      "p1-candidate-extractor": 5031,
+      "p1-ingestion-canonical": 1
+    },
+    "task_completion_count": 7,
+    "completion_task_id_count": 7,
+    "duplicate_task_completion_count": 0,
+    "legacy_visit_record_count": 0,
+    "visit_record_count": 7,
+    "no_hit_visit_count": 0,
+    "blocked_visit_count": 0,
+    "blocked_visit_task_ids_sample": [],
+    "blocked_visit_task_ids_path": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/blocked_visit_task_ids.json",
+    "task_completion_sidecar": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/task_completion_records.json",
+    "candidate_record_input_count": 5031,
+    "candidate_record_count": 2648,
+    "merged_record_count": 2648,
+    "duplicate_count": 2383,
+    "duplicate_candidate_input_rows_removed": 2383,
+    "canonical_dedupe_enabled": true,
+    "schema_error_count": 0,
+    "schema_errors_sample": [],
+    "raw_document_text_returned_to_parent": false,
+    "raw_text_violation_count": 0,
+    "stripped_extra_field_count": 15135,
+    "stripped_extra_fields_sample": [
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/S1-source-provenance.jsonl",
+        "agent_id": "S1-source-provenance",
+        "task_id": "p1:3c2a767af354903b38856db3",
+        "removed_fields": [
+          "agent_id",
+          "attempt_id",
+          "document_like_url_count",
+          "input_samples_path",
+          "packet_digest",
+          "packet_id",
+          "portal_probe_rows",
+          "sample_total",
+          "summary",
+          "unique_url_count"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/S2-deadline-status.jsonl",
+        "agent_id": "S2-deadline-status",
+        "task_id": "p1:a9b70013f7de63698fc9f3a4",
+        "removed_fields": [
+          "agent_id",
+          "attempt_id",
+          "packet_digest",
+          "packet_id",
+          "summary"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/S3-navicus-relevance.jsonl",
+        "agent_id": "S3-navicus-relevance",
+        "task_id": "p1:7399c73fff74fee784be3ae4",
+        "removed_fields": [
+          "agent_id",
+          "attempt_id",
+          "packet_digest",
+          "packet_id",
+          "summary"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/S4-submission-budget.jsonl",
+        "agent_id": "S4-submission-budget",
+        "task_id": "p1:c61c05fed1a5f0fc42f85853",
+        "removed_fields": [
+          "agent_id",
+          "attempt_id",
+          "audit_summary",
+          "input_samples_path",
+          "packet_digest",
+          "packet_id",
+          "summary",
+          "unique_candidate_count"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/S5-known-positive-coverage.jsonl",
+        "agent_id": "S5-known-positive-coverage",
+        "task_id": "p1:af10b9b06a24699023c15f1c",
+        "removed_fields": [
+          "agent_id",
+          "attempt_id",
+          "packet_digest",
+          "packet_id",
+          "review_summary",
+          "run_date",
+          "summary"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/S6-top20-precision.jsonl",
+        "agent_id": "S6-top20-precision",
+        "task_id": "p1:04144866d3d11af55dc28ca8",
+        "removed_fields": [
+          "agent_id",
+          "attempt_id",
+          "input_samples_path",
+          "packet_digest",
+          "packet_id",
+          "summary"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "令和8年度 米軍基地形成史の学び推進事業委託業務",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【入札関係】夏目漱石北千反畑旧居改修その他基本・実施設計業務委託に係るプロポーザルについて",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【公募型プロポーザル】区立板橋第五中学校改築に係る基本構想・基本計画策定支援業務並びに基本設計及び実施設計業務委託事業者募集",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "若い世代向けライフデザイン支援事業業務委託に係る条件付き一般競争入札の実施について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "令和８年度（2026年度）ヒグマ地域個体群生息数推定調査に係る現地作業委託業務（朱鞠内湖周辺地域）の一般競争入札の実施について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "令和８年度（2026年度）ヒグマ地域個体群生息数推定調査に係る現地作業委託業務（札幌周辺地域）の一般競争入札の実施について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "令和８年度不妊治療等広報委託業務に係る一般競争入札について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【水産試験場】令和8年度浮魚礁魚群蝟集状況調査等業務委託一般競争入札（条件付）の実施について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "川越市職員ストレスチェック業務委託（単価契約）",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "川越しごと支援センター就労支援セミナー業務委託",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "都城農業高等学校演習林立木調査業務委託に係る条件付一般競争入札の入札公告",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "一般競争入札の実施（令和８年度(2026年度)道有林クレジットプロモーション動画制作業務委託）",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【入札公告】滝沢1号幹線ほか管路施設調査・修繕業務委託",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【入札公告】花北幹線ほか管路施設調査・修繕業務委託",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "令和8年度第32軍司令部壕発掘調査支援業務委託",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【公募型プロポーザル】「移住ポータルサイトウェブ広告掲載業務委託」に関する企画提案の募集について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "我孫子市学校給食費・学校徴収金徴収管理システム導入及び運用保守業務委託",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "一般競争入札公告（研究発表会“2026 年度 PMDA RS 研究会” 業務委託）",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "「江東区AIデマンド交通実証運行」システム導入業務委託に係る公募型プロポーザルの実施について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【総務部広報広聴推進課】山形県政150周年記念式典運営等業務委託（令和8年5月22日入札）",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "ＡＩ技術を活用したクマ捕獲技術等研究業務委託に係る条件付き一般競争入札の実施について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "令和8年度香川「旬のイチオシ」農産物PR事業業務委託契約に係る企画提案方式（プロポーザル方式）による公募について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "令和8年度「かがわイントラプレナー(社内起業家)養成講座」開催事業業務委託に係る企画提案方式（プロポーザル方式）による公募について(公告)",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "郵送期限：5月26日 門真市立かどま歴史ミュージアム備品等移送業務委託",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "「ロボット・航空宇宙フェスタふくしま2026」への出展に係る会場設営・運営業務",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【入札関係】くまもと広場ニスト育成スクール運営等業務委託に係る条件付一般競争入札について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "「令和８年度防災情報提供アプリ啓発委託業務」に係る一般競争入札について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "全国法律事務所用PC端末等の更改に係る導入役務、機器賃貸借及び保守業務委託一式",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "ヘルメット着用重要性理解促進集中広報業務委託に係る企画提案の募集について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "消防団加入促進広報・啓発事業業務委託に関する企画提案の募集について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "令和8年度「副首都・大阪」プロモーション事業YouTube・Instagram広告配信及び分析業務委託",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "「NEDO実用化ドキュメント」に係るウェブ記事の作成及びSNSコンテンツの制作業務",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "一般競争入札の実施（令和８年度(2026年度)道有林クレジットプロモーション動画制作業務委託）",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【公募型プロポーザル】令和8年度（2026年度）中小企業等DXアクセラレーション事業業務委託について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【公募型プロポーザル】令和8年度（2026年度）中小企業等DXアクセラレーション事業業務委託について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "在米沖縄関係資料収集業務委託に係る一般競争入札公告",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "琉球政府関係文書デジタル・アーカイブ事業デジタル化業務委託に係る一般競争入札公告",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "「BioJapan 2026」への出展に係る会場設営・運営業務",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "シン・建設業魅力アップ事業に係る動画配信業務",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "県庁舎の衛生害虫防除業務委託に係る条件付一般競争入札の実施について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "【公募型プロポーザル】令和8年度（2026年度）事業承継・第二創業アトツギ支援事業業務委託について",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "情報セキュリティポリシー運用支援業務委託",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "第3次佐賀県情報セキュリティクラウド構築及び運用保守業務委託契約に係る総合評価一般競争入札を実施します。",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      },
+      {
+        "file": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/subagent_outputs/p1-ingestion-candidates.jsonl",
+        "agent_id": "p1-candidate-extractor",
+        "task_id": "kkj_portal_search_api",
+        "title": "スマートフォン教室企画運営等業務委託",
+        "removed_fields": [
+          "diagnostic_sidecar_fields",
+          "diagnostic_sidecar_ref",
+          "issuer_organization"
+        ]
+      }
+    ],
+    "frontier_count": null,
+    "frontier_task_id_count": null,
+    "processed_frontier_task_count": null,
+    "candidate_task_id_count": 288,
+    "candidate_rows_counted_as_completion": false,
+    "unprocessed_frontier_count": 0,
+    "unprocessed_task_ids_sample": [],
+    "unprocessed_frontier_task_ids_sample": [],
+    "missing_task_completion_count": 0,
+    "missing_task_completion_ids_sample": [],
+    "missing_task_completion_ids_path": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/missing_task_completion_ids.json",
+    "unprocessed_frontier_task_ids_path": "/Users/tatsuru/Documents/New project 5/out/navicus_research/2026-06-30/unprocessed_frontier_task_ids.json",
+    "root_frontier_task_count": null,
+    "processed_root_frontier_task_count": null,
+    "unprocessed_root_frontier_count": 0,
+    "completion_depth_metrics": {
+      "task_completion_count": 7,
+      "blocked_visit_count": 0,
+      "avg_checked_queries": 3.0,
+      "avg_checked_urls": 17.143,
+      "avg_checked_documents": 10.571,
+      "depth_satisfied_rate": 1.0,
+      "missing_checked_queries": 1,
+      "missing_checked_urls": 1
+    },
+    "visit_depth_metrics": {
+      "task_completion_count": 7,
+      "blocked_visit_count": 0,
+      "avg_checked_queries": 3.0,
+      "avg_checked_urls": 17.143,
+      "avg_checked_documents": 10.571,
+      "depth_satisfied_rate": 1.0,
+      "missing_checked_queries": 1,
+      "missing_checked_urls": 1
+    },
+    "source_quality_summary": {
+      "candidate_count": 2648,
+      "official_source_rate": 0.8058912386706949,
+      "individual_notice_or_document_rate": 1.0,
+      "document_like_url_rate": 0.5883685800604229,
+      "required_basic_field_checked_rate": 0.7796324269889224,
+      "field_evidence_rate": 0.0,
+      "deadline_status_checked_rate": 1.0,
+      "amount_status_checked_rate": 1.0,
+      "submission_status_checked_rate": 1.0,
+      "contract_status_checked_rate": 1.0
+    },
+    "v12_final_integrity_enforced": true,
+    "v12_final_integrity_touched_count": 2648,
+    "wave_summary": {
+      "wave_count": 1,
+      "max_concurrent_observed": 6,
+      "completed_wave_count": 1,
+      "completed_agent_count": 6
+    },
+    "note": "v8 exact completion requires one task_completion per research_task_index task. Candidates alone do not satisfy completion when task_completion gate is enabled."
+  }
+}
