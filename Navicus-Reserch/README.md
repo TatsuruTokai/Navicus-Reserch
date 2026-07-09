@@ -2,9 +2,9 @@
 
 Static GitHub Pages export for NAVICUS municipal SNS/proposal research.
 
-- Latest run: `2026-06-30_manual`
+- Latest run: `2026-07-08_manual`
 - Release: `GO`
-- Latest snapshot: `data/runs/2026-06-30/manual/snapshot.json.gz` (gzip-compressed JSON)
+- Latest snapshot: `data/runs/2026-07-08/manual/snapshot.json.gz` (gzip-compressed JSON)
 - Daily archive: `data/runs/YYYY-MM-DD/<run-label>/`
 
 Update command:

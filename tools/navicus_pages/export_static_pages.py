@@ -97,6 +97,13 @@ def release_summary(artifacts: dict[str, Any]) -> dict[str, Any]:
     preflight = artifacts.get("schemaPreflight") or {}
     external_recall = artifacts.get("externalPortalRecallAudit") or {}
     summary = release.get("summary") if isinstance(release.get("summary"), dict) else {}
+
+    def first_present(*values: Any) -> Any:
+        for value in values:
+            if value is not None:
+                return value
+        return None
+
     out = {
         "decision": release.get("decision"),
         "passed": release.get("passed"),
@@ -105,10 +112,16 @@ def release_summary(artifacts: dict[str, Any]) -> dict[str, Any]:
         "top20Precision": top20.get("top20_precision"),
         "knownPositiveRecall": known.get("known_positive_replay_recall") or known.get("recall"),
         "schemaPreflightPassed": preflight.get("passed"),
-        "candidatePromoteEligibleCount": summary.get("candidate_promote_eligible_count") or csv_go.get("candidate_promote_eligible_count"),
-        "salesPromoteEligibleCount": summary.get("sales_promote_eligible_count") or csv_go.get("sales_promote_eligible_count"),
-        "activeishSnsCandidateCount": summary.get("activeish_sns_candidate_count") or csv_go.get("activeish_sns_candidate_count"),
-        "activeishSnsOperationCount": summary.get("activeish_sns_operation_count") or csv_go.get("activeish_sns_operation_count"),
+        "candidatePromoteEligibleCount": first_present(
+            summary.get("candidate_promote_eligible_count"), csv_go.get("candidate_promote_eligible_count")
+        ),
+        "salesPromoteEligibleCount": first_present(
+            summary.get("sales_promote_eligible_count"), csv_go.get("sales_promote_eligible_count")
+        ),
+        "activeishSnsCandidateCount": first_present(summary.get("activeish_sns_candidate_count"), csv_go.get("activeish_sns_candidate_count")),
+        "activeishSnsOperationCount": first_present(
+            summary.get("activeish_sns_operation_count"), csv_go.get("activeish_sns_operation_count")
+        ),
     }
     if external_recall:
         out["externalPortalRecall"] = {

@@ -1,29 +1,52 @@
 {
   "schemaVersion": "navicus_static_manifest_v1",
   "latest": {
-    "runDate": "2026-06-30",
+    "runDate": "2026-07-08",
     "runLabel": "manual",
-    "runId": "2026-06-30_manual",
-    "snapshot": "runs/2026-06-30/manual/snapshot.json.gz",
-    "exportedAt": "2026-06-30T13:07:33.439581+00:00",
-    "proposalCount": 6628,
-    "bplus": 10,
+    "runId": "2026-07-08_manual",
+    "snapshot": "runs/2026-07-08/manual/snapshot.json.gz",
+    "exportedAt": "2026-07-09T00:57:25.348726+00:00",
+    "proposalCount": 7082,
+    "bplus": 9,
     "releaseDecision": "GO",
     "releaseGate": {
       "decision": "GO",
       "passed": true,
       "qualityPassed": true,
-      "csvDecision": "GO",
-      "top20Precision": 1.0,
-      "knownPositiveRecall": 0.8,
-      "schemaPreflightPassed": true,
-      "candidatePromoteEligibleCount": 119,
-      "salesPromoteEligibleCount": 3,
-      "activeishSnsCandidateCount": 61,
-      "activeishSnsOperationCount": 53
+      "csvDecision": null,
+      "top20Precision": 0.9,
+      "knownPositiveRecall": null,
+      "schemaPreflightPassed": null,
+      "candidatePromoteEligibleCount": 36,
+      "salesPromoteEligibleCount": 0,
+      "activeishSnsCandidateCount": 105,
+      "activeishSnsOperationCount": 89
     }
   },
   "runs": [
+    {
+      "runDate": "2026-07-08",
+      "runLabel": "manual",
+      "runId": "2026-07-08_manual",
+      "snapshot": "runs/2026-07-08/manual/snapshot.json.gz",
+      "exportedAt": "2026-07-09T00:57:25.348726+00:00",
+      "proposalCount": 7082,
+      "bplus": 9,
+      "releaseDecision": "GO",
+      "releaseGate": {
+        "decision": "GO",
+        "passed": true,
+        "qualityPassed": true,
+        "csvDecision": null,
+        "top20Precision": 0.9,
+        "knownPositiveRecall": null,
+        "schemaPreflightPassed": null,
+        "candidatePromoteEligibleCount": 36,
+        "salesPromoteEligibleCount": 0,
+        "activeishSnsCandidateCount": 105,
+        "activeishSnsOperationCount": 89
+      }
+    },
     {
       "runDate": "2026-06-30",
       "runLabel": "manual",

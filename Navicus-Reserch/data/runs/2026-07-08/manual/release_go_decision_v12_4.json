@@ -1,0 +1,31 @@
+{
+  "schema_version": "release_go_decision_v12_4_compat_from_quality_gate",
+  "decision": "GO",
+  "passed": true,
+  "run_date": "2026-07-08",
+  "created_at": "2026-07-09T00:49:35.805876+00:00",
+  "source_quality_report": "out/navicus_filtered/2026-07-08/quality_report.json",
+  "production_artifact": true,
+  "summary": {
+    "candidate_promote_eligible_count": 36,
+    "sales_promote_eligible_count": 0,
+    "activeish_sns_candidate_count": 105,
+    "activeish_sns_operation_count": 89,
+    "total_classified": 3591,
+    "active_candidate_count": 7
+  },
+  "quality_gate": {
+    "decision": "GO",
+    "passed": true,
+    "failures": [],
+    "warnings": [
+      "budget value extraction rate gate is disabled; amount status is checked instead",
+      "active candidates with unclear submission method/status: 3",
+      "classified records with department placeholder/missing: 2035"
+    ],
+    "evaluation_wiring_status": "complete",
+    "top20_precision": 0.9,
+    "targeted_recapture_rate": 1.0,
+    "live_case_recall": 1.0
+  }
+}

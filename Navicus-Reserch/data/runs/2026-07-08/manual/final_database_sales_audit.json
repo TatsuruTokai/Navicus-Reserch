@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "db": "/Users/tatsuru/Documents/New project 5/out/navicus_database/navicus_proposals.sqlite",
+  "runId": "2026-07-08_manual",
+  "counts": {
+    "currentView": 7082,
+    "salesReady": 0,
+    "selectable": 0,
+    "S": 0,
+    "A": 0,
+    "B": 0,
+    "readyFalsePositive": 0,
+    "deadlineUnknownReady": 0,
+    "eligibilityUnknownReady": 0,
+    "eligibilityIneligibleReady": 0,
+    "officialEvidenceMissingReady": 0,
+    "expiredReady": 0,
+    "sensitiveDrops": 64,
+    "latestRunRows": 3591
+  },
+  "blockingIssues": [],
+  "reviewFindings": [
+    {
+      "kind": "low_s_or_a_count",
+      "severity": "review",
+      "reason": "S/A候補が0件です。営業候補不足が自然な結果か、過剰な降格かを確認してください",
+      "counts": {
+        "S": 0,
+        "A": 0,
+        "B": 0
+      }
+    }
+  ]
+}

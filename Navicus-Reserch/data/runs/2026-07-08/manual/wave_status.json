@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-07-08",
+  "schema_version": "wave_status_v12_4",
+  "waves": [
+    {
+      "agents": [
+        "area-hokkaido-tohoku",
+        "area-kanto",
+        "area-chubu",
+        "area-kinki",
+        "area-chugoku-shikoku",
+        "area-kyushu-okinawa"
+      ],
+      "completed_agents": [
+        "area-chubu",
+        "area-chugoku-shikoku",
+        "area-hokkaido-tohoku",
+        "area-kanto",
+        "area-kinki",
+        "area-kyushu-okinawa"
+      ],
+      "concurrency": 6,
+      "finished_at": "2026-07-08T10:57:05.265784+00:00",
+      "started_at": "",
+      "status": "completed",
+      "wave_id": "wave_001",
+      "completion_contract": "task_completion_nonempty_checked_v12_5"
+    }
+  ],
+  "updated_at": "2026-07-08T10:57:58.589378+00:00"
+}
