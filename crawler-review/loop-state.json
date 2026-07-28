@@ -1,0 +1,194 @@
+{
+  "schema_version": "navicus_continuous_route_reaudit_loop_v1",
+  "started_at": "2026-07-28T13:30:00+09:00",
+  "status": "STOPPED_NET_NEW_CIRCLES_BELOW_4",
+  "current_iteration": 2,
+  "baseline": {
+    "issuer_count": 139,
+    "circle_count": 47,
+    "triangle_count": 92,
+    "displayed_case_count": 121
+  },
+  "first_wave_proposal": {
+    "circle_count": 91,
+    "triangle_count": 48,
+    "title_summary_samples": 200,
+    "applied_to_dashboard": false
+  },
+  "collision_audit": {
+    "completed_at": "2026-07-28T13:45:58+09:00",
+    "recanonicalized_at": "2026-07-28T15:35:30+09:00",
+    "decision": "GO_CANONICAL_AND_STOP",
+    "canonical_content_circle_count": 139,
+    "canonical_content_triangle_count": 0,
+    "baseline_parent_normalized_url_union_count": 269,
+    "baseline_parent_valid_case_count": 267,
+    "live_verified_case_delta_count": 2,
+    "case_union_definition": "baseline_plus_parent_a_plus_parent_b_only; fresh live verified deltas stored separately",
+    "canonical_case_evidence_row_count": 305,
+    "valid_title_summary_cases": 293,
+    "unique_case_urls": 291,
+    "cross_issuer_duplicate_case_urls": 0,
+    "within_issuer_duplicate_url_group_count": 38,
+    "content_assessment_override_count": 31,
+    "content_circles_with_route_repair": 31,
+    "dashboard_apply_allowed": true,
+    "canonical_overlay_sha256": "c6471e22dc8c12ce38dd477fd5674e413c25bbc09642b56a83436c96a43cd0ee",
+    "closed_p0": [
+      "NIIGATA_BASELINE_EVIDENCE_RESTORED",
+      "TOKUSHIMA_HTML_ROUTE_REPLACES_STANDALONE_PDF",
+      "NAGASAKI_GENERIC_CASE_REPLACED_BY_REAL_HTML_CASE",
+      "KUMAMOTO_TITLE_URL_MAPPING_CORRECTED"
+    ],
+    "canonical_case_union_sha256": "06b3b86d18b3db1885dce13a7dd432d2a874205ccd9a24d76fc5545aebb43286",
+    "final_collision_audit": "iteration_02/final_collision_audit.json"
+  },
+  "iteration_01": {
+    "started_at": "2026-07-28T13:45:58+09:00",
+    "iteration_start_circle_count": 122,
+    "iteration_start_triangle_count": 17,
+    "new_niigata_circle_increment": 0,
+    "parent_a": {
+      "thread_id": "019fa70a-ff74-7ab0-b09a-eee72601a38e",
+      "model": "gpt-5.6-sol",
+      "status": "COMPLETED",
+      "scope_count": 36,
+      "prompt": "iteration_01/parent_a_prompt.md",
+      "child_thread_ids": [
+        "019fa70c-50ce-7eb2-9df7-15f88a82e8a3",
+        "019fa70c-543b-7c01-b9c5-1a1bbd26ced7"
+      ],
+      "net_new_circles": 13
+    },
+    "parent_b": {
+      "thread_id": "019fa70b-268d-7d90-8fe2-0341470c7ece",
+      "model": "gpt-5.6-sol",
+      "status": "COMPLETED",
+      "scope_count": 25,
+      "prompt": "iteration_01/parent_b_prompt.md",
+      "child_thread_ids": [
+        "019fa70c-82eb-7501-96d0-b1697084272a",
+        "019fa70c-bfcb-7d72-92af-08b4b9a2c5fb"
+      ],
+      "net_new_circles": 1
+    },
+    "qwen": {
+      "status": "UNAVAILABLE",
+      "reason": "HTTP 401 InvalidApiKey; Luna/Sol continue without blocking."
+    },
+    "net_new_circles": 14,
+    "stop_decision": "CONTINUE_TO_ITERATION_02",
+    "completed_at": "2026-07-28T14:35:36+09:00",
+    "child_acceptance": {
+      "status": "PASS",
+      "accepted_batches": 4,
+      "batch_count": 4
+    },
+    "parent_completion_collision_audit": {
+      "status": "PASS",
+      "path": "iteration_01/parent_completion_collision_audit.json"
+    },
+    "opus_review": {
+      "status": "GO",
+      "path": "iteration_01/opus_final_review.md",
+      "fresh_controller_conversation_id": "80fb3e6e-357b-46b3-b0e1-006ed104ae1f",
+      "corroborating_conversation_id": "714c9a19-f22e-4ec6-b082-190753236d8e",
+      "superseded_conversation_id": "d7ae1481-158e-44bd-948f-a87fc75d58c3"
+    },
+    "iteration_after_circle_count": 136,
+    "iteration_after_triangle_count": 3,
+    "remaining_triangle_issuers": [
+      "muni:172103",
+      "muni:292052",
+      "shared:13:e_tokyo_joint_procurement"
+    ],
+    "active_route_p2_count": 30
+  },
+  "iteration_02": {
+    "started_at": "2026-07-28T14:36:00+09:00",
+    "iteration_start_circle_count": 136,
+    "iteration_start_triangle_count": 3,
+    "target_manifest": "iteration_02/target_manifest.json",
+    "target_count": 31,
+    "active_route_p2_count": 30,
+    "content_triangle_count": 3,
+    "expected_max_net_new_circles": 3,
+    "parent_a": {
+      "thread_id": "019fa739-3e41-78e3-9764-9bd4ebcd7bf6",
+      "model": "gpt-5.6-sol",
+      "status": "COMPLETED",
+      "scope_count": 16,
+      "prompt": "iteration_02/parent_a_prompt.md",
+      "child_thread_ids": [
+        "019fa73b-938a-75c2-a577-007571357b1b"
+      ],
+      "child_model": "gpt-5.6-luna",
+      "net_new_circles": 2
+    },
+    "parent_b": {
+      "thread_id": "019fa739-4671-77e0-88bb-8bb9136abc2e",
+      "model": "gpt-5.6-sol",
+      "status": "COMPLETED",
+      "scope_count": 15,
+      "prompt": "iteration_02/parent_b_prompt.md",
+      "child_thread_ids": [
+        "019fa73b-b2a4-7213-88bb-b87d3de76e06"
+      ],
+      "child_model": "gpt-5.6-luna",
+      "net_new_circles": 1
+    },
+    "prompt_kit_audit": {
+      "status": "PASS",
+      "parent_a_parent_b_overlap_count": 0,
+      "target_union_count": 31,
+      "missing_target_count": 0,
+      "extra_target_count": 0
+    },
+    "qwen": {
+      "status": "OPTIONAL_NOT_STARTED",
+      "scope": "bounded URL inventory, sitemap/CMS classification, duplicate grouping only"
+    },
+    "controller_acceptance": {
+      "status": "PASS",
+      "path": "iteration_02/controller_acceptance_audit.json",
+      "target_issuers": 31,
+      "valid_case_rows": 52,
+      "prior_url_union_drop_count": 0,
+      "p0": 0,
+      "p1": 0
+    },
+    "net_new_circles": 3,
+    "iteration_after_circle_count": 139,
+    "iteration_after_triangle_count": 0,
+    "remaining_triangle_issuers": [],
+    "active_route_p2_count_after": 31,
+    "stop_decision": "NET_NEW_CIRCLES_BELOW_4",
+    "completed_at": "2026-07-28T15:35:30+09:00",
+    "stop_rule_satisfied": true,
+    "iteration_03_allowed": false,
+    "opus_review": {
+      "status": "GO_CANONICAL_AND_STOP",
+      "path": "iteration_02/opus_final_review.md",
+      "conversation_id": "bf7e85ca-7f53-493d-bb9c-59860f8a1a1f"
+    },
+    "canonical_finalization": {
+      "status": "GO",
+      "path": "iteration_02/final_collision_audit.json",
+      "canonical_overlay_path": "iteration_02/canonical_overlay.json",
+      "canonical_case_union_path": "iteration_02/canonical_case_union.json",
+      "canonical_overlay_sha256": "c6471e22dc8c12ce38dd477fd5674e413c25bbc09642b56a83436c96a43cd0ee",
+      "canonical_case_union_sha256": "06b3b86d18b3db1885dce13a7dd432d2a874205ccd9a24d76fc5545aebb43286"
+    }
+  },
+  "controller_thread_id": "019fa703-27fe-7921-887e-eca42f7606d7",
+  "opus_conversation_id": "bf7e85ca-7f53-493d-bb9c-59860f8a1a1f",
+  "monitor_automation_id": "navicus-2",
+  "parent_thread_limit": 2,
+  "minimum_net_new_circles_to_continue": 4,
+  "stop_rule_satisfied": true,
+  "next_action": "No iteration_03. Publish the 139/0 canonical dashboard and keep the 31 route-only P2 findings as a separate backlog.",
+  "stop_decision": "NET_NEW_CIRCLES_BELOW_4",
+  "iteration_03_allowed": false,
+  "finalized_at": "2026-07-28T15:35:30+09:00",
+  "stop_reason": "NET_NEW_CIRCLES_BELOW_4"
+}

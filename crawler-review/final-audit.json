@@ -1,0 +1,117 @@
+{
+  "schema_version": "navicus_independent_final_canonical_audit_v1",
+  "audited_at": "2026-07-28T15:37:52+09:00",
+  "auditor_role": "fresh_result_audit_sol",
+  "scope": "read-only full-canonical audit after controller semantic normalization",
+  "verdict": "PASS",
+  "canonical_decision": "GO_CANONICAL_AND_STOP",
+  "inputs": {
+    "canonical_overlay": {
+      "path": "../canonical_overlay.json",
+      "sha256": "c6471e22dc8c12ce38dd477fd5674e413c25bbc09642b56a83436c96a43cd0ee"
+    },
+    "canonical_case_union": {
+      "path": "../canonical_case_union.json",
+      "sha256": "06b3b86d18b3db1885dce13a7dd432d2a874205ccd9a24d76fc5545aebb43286"
+    },
+    "final_collision_audit": {
+      "path": "../final_collision_audit.json",
+      "sha256": "8278989a45e9e92eb14a96b4f94b5d8a0bbe9644ea0f41a57d9ec1ca8d1005cc"
+    },
+    "opus_final_review": {
+      "path": "../opus_final_review.md",
+      "sha256": "7b565bf84004db886d6809f7544f18a1b5c84950e3a2eb4a623ea0f3ac6bbbc4"
+    }
+  },
+  "counts": {
+    "issuer_rows": 139,
+    "unique_issuers": 139,
+    "content_circle_count": 139,
+    "content_triangle_count": 0,
+    "iteration_02_net_new_circle_count": 3,
+    "valid_case_rows": 293,
+    "unique_valid_case_urls": 291,
+    "invalid_evidence_rows": 20,
+    "alternate_evidence_rows": 1,
+    "active_route_p2_count": 31,
+    "repair_schema_v1_rows": 139,
+    "string_route_nodes": 0,
+    "prior_url_union_drops": 0,
+    "cross_issuer_duplicate_valid_urls": 0,
+    "legacy_document_terminals_preserved": 4,
+    "iteration_02_document_or_archive_promotions": 0
+  },
+  "route_quality_distribution": {
+    "ACCEPTABLE": 8,
+    "REVIEW_REQUIRED": 28,
+    "UNVERIFIED": 3,
+    "VERIFIED": 19,
+    "VERIFIED_AGGREGATION": 56,
+    "VERIFIED_DEDICATED": 25
+  },
+  "semantic_gate": {
+    "route_p2_values": [
+      "REVIEW_REQUIRED",
+      "UNVERIFIED"
+    ],
+    "route_p2_requires": [
+      "non-empty blockers",
+      "concrete first_failed_stage",
+      "normalized_repair.overlay_safe=false"
+    ],
+    "verified_or_acceptable_requires": [
+      "empty blockers",
+      "first_failed_stage=null",
+      "normalized_repair.overlay_safe=true"
+    ],
+    "content_assessment_is_independent_of_route_quality": true
+  },
+  "checks": {
+    "issuer_set_exact_and_unique": true,
+    "all_content_assessments_circle": true,
+    "content_regression_count_zero": true,
+    "repair_schema_single_version": true,
+    "repair_route_nodes_are_objects": true,
+    "first_parent_url_null_for_all_routes": true,
+    "route_parent_chain_continuous": true,
+    "case_route_paths_complete": true,
+    "case_route_terminal_matches_official_url": true,
+    "repair_case_detail_url_set_matches_cases": true,
+    "overlay_case_set_matches_canonical_union": true,
+    "title_and_summary_complete_for_valid_cases": true,
+    "prior_case_url_union_preserved_across_valid_invalid_alternate_evidence": true,
+    "cross_issuer_duplicate_valid_url_count_zero": true,
+    "route_quality_semantics_consistent": true,
+    "kashihara_two_inline_cases_preserved": true,
+    "iteration_03_forbidden_by_stop_rule": true
+  },
+  "net_new_circle_ids": [
+    "shared:13:e_tokyo_joint_procurement",
+    "muni:172103",
+    "muni:292052"
+  ],
+  "resolved_semantic_collision": {
+    "initial_inconsistent_row_count": 19,
+    "normalization": "verified rows normalized to null first_failed_stage and overlay_safe=true; active route blockers retained as REVIEW_REQUIRED",
+    "active_blockers_retained": [
+      "muni:382027",
+      "muni:392014"
+    ],
+    "content_count_impact": 0,
+    "route_p2_count_before": 29,
+    "route_p2_count_after": 31
+  },
+  "acceptance_defects": {
+    "p0": 0,
+    "p1": 0,
+    "p2": 0
+  },
+  "stop": {
+    "reason": "NET_NEW_CIRCLES_BELOW_4",
+    "net_new_circles": 3,
+    "threshold": 4,
+    "iteration_03_allowed": false,
+    "opus_verdict": "GO_CANONICAL_AND_STOP"
+  },
+  "issues": []
+}
